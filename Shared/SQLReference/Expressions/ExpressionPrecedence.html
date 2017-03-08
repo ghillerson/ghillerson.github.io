@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|Expressions">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Specifies operator precedence in Splice Machine SQL expressions." /><title>Expression Precedence
+        </title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/Expressions/ExpressionPrecedence.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="Expressions.ExpressionPrecedence" id="Expressions.ExpressionPrecedence"></a>Expression <a name="kanchor121"></a>Precedence</h1>
+            <p>The precedence of operations from highest to lowest is:</p>
+            <ul>
+                <li value="1"><span class="CodeFont">(), ?,</span> Constant (including sign), <span class="CodeFont">NULL</span>, <span class="ItalicFont">ColumnReference</span>, <span class="ItalicFont">ScalarSubquery</span>, <span class="CodeFont">CAST</span></li>
+                <li value="2"><span class="CodeFont">LENGTH, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP</span>, and other built-ins</li>
+                <li value="3">unary <span class="CodeFont">+</span> and <span class="CodeFont">-</span></li>
+                <li value="4"><span class="CodeFont">*, /, ||</span> (concatenation)</li>
+                <li value="5">binary <span class="CodeFont">+</span> and <span class="CodeFont">-</span></li>
+                <li value="6">comparisons, quantified comparisons, <span class="CodeFont">EXISTS, IN, IS NULL, LIKE, BETWEEN, IS</span></li>
+                <li value="7"><span class="CodeFont">NOT</span>
+                </li>
+                <li value="8"><span class="CodeFont">AND</span>
+                </li>
+                <li value="9"><span class="CodeFont">OR</span>
+                </li>
+            </ul>
+            <p>You can explicitly specify precedence by placing expressions within parentheses. An expression within parentheses is evaluated before any operations outside the parentheses are applied to it.</p>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example">(3+4)*9
+(age &lt; 16 OR age &gt; 65) AND employed = TRUE</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

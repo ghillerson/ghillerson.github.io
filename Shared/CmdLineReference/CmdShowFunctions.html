@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="splice&gt; CLI|Show Commands">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Displays information about functions defined in the database or in a schema." /><title>Show Functions command</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#Shared/CmdLineReference/CmdShowFunctions.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor360"></a>Show Functions</h1>
+            <p>The <span class="AppCommand">show functions</span> command displays all of the functions in the database, or the names of the functions in the specified schema.</p>
+            <p class="heading3">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax" xml:space="preserve">SHOW FUNCTIONS [ IN schemaName ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">schemaName</p>
+                <p class="paramDefnFirst">If you supply a schema name, only the functions in that schema are displayed; otherwise, all functions in the database are displayed.</p>
+            </div>
+            <p class="heading3">Results</p>
+            <p>The <span class="AppCommand">show functions</span> command results contains the following columns:</p>
+            <table summary="List of columns in the output of the show functions command.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont">FUNCTION_SCHEMA</td>
+                        <td>The name of the function's schema</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">FUNCTION_NAME</td>
+                        <td>The name of the function</td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont">REMARKS</td>
+                        <td>Any remarks that have been stored for the function</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="heading3">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
+&gt; RETURNS DOUBLE
+&gt; PARAMETER STYLE JAVA
+&gt; NO SQL LANGUAGE JAVA
+&gt; EXTERNAL NAME 'java.lang.Math.toDegrees';
+0 rows inserted/updated/deleted
+splice&gt; show functions in splice;
+FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
+-------------------------------------------------------------------------
+SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees           
+
+1 row selected
+</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

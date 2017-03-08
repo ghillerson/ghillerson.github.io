@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="splice&gt; CLI">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Introduction to the Show commands available in the Splice Machine command line interpreter." /><title>Splice Machine Show Commands</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#Shared/CmdLineReference/ShowCmds.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor73"></a>Show Command</h1>
+            <p>The <span class="AppCommand">show</span> command is used to display information about active connections and database objects. You can use a number of different forms of this command to show different types of information, as shown in the following syntax diagram:</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax" xml:space="preserve">SHOW
+{
+   CONNECTIONS                                 | 
+   FUNCTIONS [ IN schemaName ]                 |
+   INDEXES [ IN schemaName | FROM table-Name ] |
+   PRIMARYKEYS FROM&#160;schemaName.FROM tableName  |
+   PROCEDURES [ IN schemaName ]                |
+   ROLES                                       |
+   SCHEMAS                                     |
+   SYNONYMS [ IN schemaName ]                  |
+   TABLES [ IN schemaName ]                    |
+   VIEWS [ IN schemaName ]                     |
+}
+</pre>
+            </div>
+            <p>&#160;</p>
+            <p>Each form of the <span class="CodeFont">SHOW</span>&#160;command has its own topic page:</p>
+            <table summary="Tables summarizing the available show commands.">
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowConnections.html">show connections</a>
+                        </td>
+                        <td>Displays a list of connection names and URLs.</td>
+                        <td><span class="AppCommand">splice&gt; show connections;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowFunctions.html">show functions</a>
+                        </td>
+                        <td>Displays the functions in a database or in a specific schema.</td>
+                        <td><span class="AppCommand">splice&gt; show functions;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowIndexes.html">show indexes</a>
+                        </td>
+                        <td>Displays the indexes in a database, a schema, or a table.</td>
+                        <td><span class="AppCommand">splice&gt; show indexes;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowPrimaryKeys.html">show primarykeys</a>
+                        </td>
+                        <td>Displays the primary keys in a table.</td>
+                        <td><span class="AppCommand">splice&gt; show primarykeys from myschema.myTbl;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowProcedures.html">show procedures</a>
+                        </td>
+                        <td>Displays the procedures that have been created in the database.</td>
+                        <td><span class="AppCommand">splice&gt; show procedures;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowRoles.html">show roles</a>
+                        </td>
+                        <td>Displays a sorted list of all of the roles defined in the database.</td>
+                        <td><span class="AppCommand">splice&gt; show roles;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowSchemas.html">show schemas</a>
+                        </td>
+                        <td>Displays all of the schemas in the current connection.</td>
+                        <td><span class="AppCommand">splice&gt; show schemas;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowSynonyms.html">show synonyms</a>
+                        </td>
+                        <td>Displays the synonyms that have been created in a database or schema.</td>
+                        <td><span class="AppCommand">splice&gt; show synonyms;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowTables.html">show tables</a>
+                        </td>
+                        <td>Displays all of the tables in a database or schema.</td>
+                        <td><span class="AppCommand">splice&gt; show tables;</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CodeFont"><a href="CmdShowViews.html">show views</a>
+                        </td>
+                        <td>Displays all of the views in a schema.</td>
+                        <td><span class="AppCommand">splice&gt; show views;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

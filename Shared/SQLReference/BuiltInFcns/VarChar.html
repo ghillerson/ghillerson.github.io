@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|SQL Built-in Functions|Conversion Functions">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Built-in SQL function that returns a varying-length character string" /><title>VARCHAR built-in SQL function</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/BuiltInFcns/VarChar.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="BuiltInFcns.VarChar" id="BuiltInFcns.VarChar"></a><a name="kanchor72"></a>VARCHAR</h1>
+            <p>The <span class="CodeFont">VARCHAR</span> function returns a varying-length character string representation of a character string.</p>
+            <p class="heading2">Character to varchar syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax">VARCHAR (<span class="ItalicFont">CharacterStringExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">CharacterStringExpression
+            </p>
+                <p class="paramDefnFirst">An expression whose value must be of a character-string data type with a maximum length of <span class="CodeFont">32,672</span> bytes.</p>
+            </div>
+            <p class="heading2">Datetime to varchar syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax">VARCHAR (<span class="ItalicFont">DatetimeExpression</span> ) </pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">DatetimeExpression</p>
+                <p class="paramDefnFirst">An expression whose value must be of a date, time, or timestamp data type.</p>
+            </div>
+            <p class="heading2">Example</p>
+            <p>The <span class="AppCommand">Position</span> column in our <span class="AppCommand">Players</span> table is defined as <span class="CodeFont">CHAR(2)</span>. The following query show hows to access positon values as <span class="CodeFont">VARCHAR</span>s:</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt; SELECT VARCHAR(Position) 
+   FROM Players 
+   WHERE ID &lt; 11;
+1   
+----
+C   
+1B  
+2B  
+SS  
+3B  
+LF  
+CF  
+RF  
+OF  
+RF  
+
+10 rows selected
+</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Intro.NumericTypes.html">About Data Types</a>
+                </li>
+                <li value="2"><a href="../DataTypes/Varchar.html"><span class="CodeFont">VARCHAR</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

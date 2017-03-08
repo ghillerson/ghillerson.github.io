@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|SQL Built-in Functions|Miscellaneous Functions">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>IDENTITY_VAL_LOCAL</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/BuiltInFcns/IdentityValLocal.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="BuiltInFcns.IdentityValLocal" id="BuiltInFcns.IdentityValLocal"></a><a name="kanchor392"></a>IDENTITY_VAL_LOCAL</h1>
+            <p>Splice Machine supports the <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function. </p>
+            <p class="heading2">Syntax:</p>
+            <div class="preWrapper"><pre class="FcnSyntax">IDENTITY_VAL_LOCAL ( )</pre>
+            </div>
+            <p>The <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function is a non-deterministic function that returns the most recently assigned value of an identity column for a connection, where the assignment occurred as a result of a single row <span class="CodeFont">INSERT</span> statement using a <span class="CodeFont">VALUES</span> clause. </p>
+            <p>The <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function has no input parameters. The result is a <span class="CodeFont">DECIMAL (31,0)</span>, regardless of the actual data type of the corresponding
+		identity column.</p>
+            <p>The value returned by the <span class="CodeFont">IDENTITY_VAL_LOCAL</span> function for a connection is the value assigned to the identity column of the table identified in the
+		most recent single row <span class="CodeFont">INSERT</span> statement. The <span class="CodeFont">INSERT</span> statement must contain a <span class="CodeFont">VALUES</span> clause on a table containing an identity column. This function returns a <span class="CodeFont">null</span> value when a single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause has not been issued for a table containing an identity column.</p>
+            <p>The result of the function is <span class="BoldFont">not</span> affected by the following:</p>
+            <ul>
+                <li value="1">A single row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause for a table without an identity column</li>
+                <li value="2">A multiple row <span class="CodeFont">INSERT</span> statement with a <span class="CodeFont">VALUES</span> clause</li>
+                <li value="3">An <span class="CodeFont">INSERT</span> statement with a full <span class="CodeFont">SELECT</span></li>
+            </ul>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>If a table with an identity column has an <span class="CodeFont">INSERT</span> trigger defined that inserts into another table with another identity column, then the <span class="CodeFont">IDENTITY_VAL_LOCAL()</span> function will return the generated value for the statement table, and not for the table modified by the trigger.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapper"><pre class="Example">splice&gt; CREATE&#160;TABLE t1(c1 INT&#160;GENERATED&#160;ALWAYS&#160;AS&#160;IDENTITY, c2 INT);
+0 rows inserted/updated/deleted<br /><br />
+splice&gt; INSERT&#160;INTO&#160;t1(c2) VALUES(8);
+1 row inserted/updated/deleted<br /><br />
+splice&gt; VALUES IDENTITY_VAL_LOCAL();
+1 
+-------------------------------
+1                              
+1 row selected<br /></pre><pre class="Example">splice&gt; SELECT&#160;IDENTITY_VAL_LOCAL()+1, IDENTITY_VAL_LOCAL()-1 FROM&#160;t1;
+1                                |2                          
+-------------------------------------------------------------------
+2                                |0                                
+1 row selected</pre><pre class="Example">
+splice&gt; INSERT&#160;INTO t1(c2) VALUES (IDENTITY_VAL_LOCAL());
+1 row inserted/updated/deleted<br /><br />
+splice&gt; SELECT * FROM&#160;t1;
+C1             |C2             
+-------------------------------
+1              |8              
+2              |1              
+2 rows selected</pre><pre class="Example">
+splice&gt; VALUES IDENTITY_VAL_LOCAL();
+1                        
+-------------------------------
+2                              
+1 row selected<br /><br />
+splice&gt; INSERT&#160;INTO&#160;t1(c2) VALUES (8), (9);
+2 rows inserted/updated/deleted<br /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- multi-values insert, return value of the function should not change<br />
+splice&gt; VALUES IDENTITY_VAL_LOCAL();
+1                        
+-------------------------------
+2                              
+1 row selected</pre><pre class="Example">
+splice&gt; SELECT&#160;* FROM t1;
+C1             |C2             
+-------------------------------
+1              |8              
+2              |1              
+3              |8              
+4              |9              
+4 rows selected</pre><pre class="Example">
+splice&gt; INSERT&#160;INTO&#160;t1(c2) SELECT&#160;c1 FROM&#160;t1;
+4 rows inserted/updated/deleted<br /><br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-- insert with sub-select, return value should not change
+splice&gt; VALUES&#160;IDENTITY_VAL_LOCAL();
+1                        
+-------------------------------
+2                              
+1 row selected</pre><pre class="Example">
+splice&gt; SELECT&#160;* FROM t1;
+C1             |C2             
+-------------------------------
+1              |8              
+2              |1              
+3              |8              
+4              |9              
+5              |1              
+6              |2              
+7              |3              
+8              |4              <br />-------------------------------
+8 rows selected </pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

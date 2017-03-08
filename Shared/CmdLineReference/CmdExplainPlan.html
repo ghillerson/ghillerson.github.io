@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="splice&gt; CLI|Optimization &amp; Statistics Commands">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Displays the execution plan for an SQL&#160;statement." /><title>Explain Plan command</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#Shared/CmdLineReference/CmdExplainPlan.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor409"></a>Explain Plan Command</h1>
+            <p>The <span class="AppCommand">explain</span> command displays the execution plan for a statement without actually executing the statement; it parses and optimizes the SQL, then presents its execution plan.</p>
+            <p>You can use this to tune a query for improved performance.</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax" xml:space="preserve">explain <span class="ItalicFont">Statement</span> ]</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName"><span class="ItalicFont">Statement</span>
+                </p>
+                <p class="paramDefnFirst">An SQL&#160;statement. </p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>SQL Data Definition Language (DDL) statement have no known cost, and thus do not require optimization. Because of this, the <span class="CodeFont">explain</span> command does not work with DDL statements; attempting to <span class="CodeFont">explain</span> a DDL statement such as <span class="CodeFont">CREATE TABLE</span> will generate a syntax error. </p>
+            <p>For more information about using the explain command, including a number of annotated examples, see the <a href="../Developers/TuningAndDebugging/ExplainPlan.html">Explain Plan</a> topic in the <span class="ItalicFont">Performance Tuning</span> section of our <span class="ItalicFont">Administrator's Guide</span>.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt; explain select *&#160;from t t1 where t1.i &lt;&#160;(select max(i)&#160;from t t1);</pre>
+            </div>
+            <p>The <a href="../Developers/TuningAndDebugging/ExplainPlan.html">Explain Plan</a> topic in the <span class="ItalicFont">Performance Tuning</span> section of our <span class="ItalicFont">Administrator's Guide</span> contains a number of examples that are described in detail.</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

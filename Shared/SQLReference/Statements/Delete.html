@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|Statements|Data Manipulation (DML) Statements">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Deletes records from a table." /><title>DELETE statement</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/Statements/Delete.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="Statements.Delete" id="Statements.Delete"></a><a name="kanchor295"></a>DELETE</h1>
+            <p>The <span class="CodeFont">DELETE</span>&#160;statement deletes records from a table.</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapperWide"><pre class="FcnSyntax" xml:space="preserve">{
+  DELETE FROM <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#TableName">table-Name</a></span> [[AS] <span class="ItalicFont"><a href="../Identifiers/IdentifierTypes.html#CorrelationName">correlation-Name</a></span>]
+    [<span class="ItalicFont"><a href="../Clauses/Where.html">WHERE clause</a></span>]
+}</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">table-Name</p>
+                <p class="paramDefnFirst">The name of the table from which you want to delete records.</p>
+                <p class="paramName">correlation-Name</p>
+                <p class="paramDefnFirst">The optional alias (alternate name)&#160;for the table.</p>
+                <p class="paramName">WHERE&#160;clause</p>
+                <p class="paramDefnFirst">The clause that specifies which record(s) to select for deletion.</p>
+            </div>
+            <p class="heading2">Usage</p>
+            <p>The <span class="CodeFont">DELETE</span>&#160;statement removes all rows identified by the table name and <span class="CodeFont"><a href="../Clauses/Where.html">WHERE</a></span> clause.</p>
+            <p class="heading2">Examples</p>
+            <div class="preWrapperWide"><pre class="Example" xml:space="preserve">splice&gt;&#160;DELETE&#160;FROM&#160;Players WHERE&#160;Year(Birthdate)&#160;&gt;&#160;1990;
+8 rows inserted/updated/deleted
+</pre>
+            </div>
+            <p class="heading2">Statement Dependency System</p>
+            <p>A searched delete statement depends on the table being updated, all of its conglomerates (units of storage such as heaps or indexes), and any other table named in the <span class="CodeFont">WHERE</span> clause. A <span class="CodeFont"><a href="CreateIndex.html">CREATE INDEX</a></span> or <span class="CodeFont"><a href="DropIndex.html">DROP INDEX</a></span> statement for the target table of a prepared searched delete statement  invalidates the prepared searched delete statement.</p>
+            <p>A <span class="CodeFont">CREATE INDEX</span> or <span class="CodeFont">DROP INDEX</span> statement for the target table of a prepared positioned delete invalidates the prepared positioned delete statement.</p>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CreateIndex.html"><span class="CodeFont">CREATE&#160;INDEX</span></a> statement</li>
+                <li value="2"><a href="DropIndex.html"><span class="CodeFont">DROP&#160;INDEX</span></a> statement</li>
+                <li value="3"><a href="Select.html"><span class="CodeFont">SELECT</span></a>&#160;statement</li>
+                <li value="4"><a href="../Clauses/Where.html"><span class="CodeFont">WHERE</span></a>&#160;clause</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

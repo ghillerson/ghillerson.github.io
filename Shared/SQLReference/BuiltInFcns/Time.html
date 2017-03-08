@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|SQL Built-in Functions|Date and Time Functions">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Built-in SQL function that returns the time part of a value" /><title>TIME built-in SQL function</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/BuiltInFcns/Time.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="BuiltInFcns.Time" id="BuiltInFcns.Time"></a><a name="kanchor187"></a>TIME</h1>
+            <p>The <span class="CodeFont">TIME</span> function returns a time from a value.</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax" xml:space="preserve">TIME ( <span class="ItalicFont">expression</span> )</pre>
+            </div>
+            <div class="paramList">
+                <p class="paramName">expression
+            </p>
+                <p class="paramDefnFirst">An expression that can be any of the following:
+            <ul class="bullet"><li value="1">A <a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;value</li><li value="2">A <a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;value</li><li value="3">A valid string representation of a time or timestamp</li></ul></p>
+            </div>
+            <p class="heading2">Results</p>
+            <p>The returned result is governed by the following rules:</p>
+            <ul>
+                <li value="1">If the argument can be <span class="CodeFont">NULL</span>, the result can be <span class="CodeFont">NULL</span>; if the argument is <span class="CodeFont">NULL</span>, the result is the <span class="CodeFont">NULL</span>value.</li>
+                <li value="2">If the argument is a time, the result is that time value.</li>
+                <li value="3">If the argument is a timestamp, the result is the time part of the timestamp.</li>
+                <li value="4">If the argument is a string, the result is the time represented by the string.</li>
+            </ul>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax">TIME ( <span class="ItalicFont">expression</span> )</pre>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">splice&gt;&#160;VALUES&#160;TIME( CURRENT_TIMESTAMP );
+1
+--------
+18:53:13
+
+1 row selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="../DataTypes/Time.html"><span class="CodeFont">TIME</span></a>&#160;data type</li>
+                <li value="2"><a href="../DataTypes/TimeStamp.html"><span class="CodeFont">TIMESTAMP</span></a>&#160;data type</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

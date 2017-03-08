@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|SQL Built-in Functions|Current Session Functions">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Built-in SQL function that returns the authorization ID of the user who created the current SQL session" /><title>SESSION_USER built-in SQL function</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/BuiltInFcns/SessionUser.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="BuiltInFcns.Session_User" id="BuiltInFcns.Session_User"></a><a name="kanchor253"></a>SESSION_USER</h1>
+            <p>When used outside stored routines, <a href="CurrentUser.html"><span class="CodeFont">CURRENT_USER</span></a>, <span class="CodeFont"><a href="User.html">USER</a></span>, and <span class="CodeFont">SESSION_USER</span> all return the authorization identifier of the user that created the SQL session.</p>
+            <p><span class="CodeFont">SESSION_USER</span> also always returns this value when used within stored routines.</p>
+            <p>If used within a stored routine created with <span class="CodeFont">EXTERNAL SECURITY DEFINER</span>, however, <span class="CodeFont">CURRENT_USER</span> and <span class="CodeFont">USER</span> return the authorization identifier of the user that owns the schema of the routine. This is usually the creating user, although the database owner could be the creator as well.</p>
+            <p>For information about definer's and invoker's rights, see <a href="../Statements/CreateProcedure.html"><span class="CodeFont">CREATE PROCEDURE</span> statement</a> or <a href="../Statements/CreateFunction.html"><span class="CodeFont">CREATE FUNCTION</span> statement</a>.</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax">SESSION_USER</pre>
+            </div>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example" xml:space="preserve">VALUES SESSION_USER;
+1
+--------------------------------------------------
+SPLICE
+
+1 row selected</pre>
+            </div>
+            <p class="heading2">See Also</p>
+            <ul>
+                <li value="1"><a href="CurrentUser.html"><span class="CodeFont">CURRENT_USER</span></a> function</li>
+                <li value="2"><a href="User.html"><span class="CodeFont">USER</span></a> function</li>
+                <li value="3"><a href="../Statements/CreateFunction.html"><span class="CodeFont">CREATE_FUNCTION</span></a> statement</li>
+                <li value="4"><a href="../Statements/CreateProcedure.html"><span class="CodeFont">CREATE_PROCEDURE</span></a>&#160;statement</li>
+            </ul>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

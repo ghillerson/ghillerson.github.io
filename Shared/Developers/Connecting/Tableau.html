@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Connecting Your Database">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Shows you how to connect the Windows business intelligence tool Tableau to Splice Machine using the ODBC&#160;driver (or ODBC/JDBC&#160;bridge)." /><title>Connecting Splice Machine with Tableau</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/Developers/Connecting/Tableau.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor384"></a>Connecting Tableau with ODBC</h1>
+            <p>This topic presents an example of connecting the <span class="ItalicFont">Tableau</span> business intelligence tool to Splice Machine via ODBC, and serves as an example of connecting other tools to Splice Machine with ODBC. This page describes connecting Tableau to Splice Machine on a Windows PC.</p>
+            <p>Follow these four steps to install and use a free trial version of <span class="ItalicFont">Tableau</span>.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Install Tableau:</p>
+                        <p class="indentLevel1">Download <span class="ItalicFont">Tableau</span> from <a href="http://www.tableausoftware.com" target="_blank">www.tableausoftware.com</a> and install it on your Windows system.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Install and Configure the ODBC&#160;driver:</p>
+                        <p class="indentLevel1">Follow the instructions in our <a href="ODBCDriver.html">ODBC&#160;Driver</a> topic to download, install, and configure our ODBC&#160;driver for your Windows or Linux computer.</p>
+                        <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> ODBC driver; other drivers will not work correctly.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Connect from Tableau:</p>
+                        <p class="indentLevel1">Now that you've got your data source set up, you can use it with Tableau. Follow these steps to connect to your data source in Tableau:</p>
+                        <ol class="plainFont" style="list-style-type: lower-alpha;">
+                            <li value="1">
+                                <p class="topLevel">Open the list of connections:</p>
+                                <p class="indentLevel1">Click <span class="AppCommand">Connect to Data</span> on Tableau's opening screen to reveal the list of possible data connections.</p>
+                            </li>
+                            <li value="2">
+                                <p class="topLevel">Select ODBC:</p>
+                                <p class="indentLevel1">Scroll to the bottom of the <span class="AppCommand">On a server</span> list, and click <span class="AppCommand">Other Databases (ODBC)</span>.</p>
+                            </li>
+                            <li value="3">
+                                <p class="topLevel">Select your DSN and connect:</p>
+                                <p class="indentLevel1">Select the DSN&#160;you just created from the drop-down list, and then click the <span class="AppCommand">Connect</span> button.</p>
+                            </li>
+                            <li value="4">
+                                <p class="topLevel">Select the schema:</p>
+                                <p class="indentLevel1">Select the schema you want to work with (<span class="CodeFont">splice</span>), and then select the <span class="AppCommand">Single Table</span> option.</p>
+                            </li>
+                            <li value="5">
+                                <p class="topLevel">Select the table to view:</p>
+                                <p class="indentLevel1">Click the search (magnifying glass) icon, and then select the table you want to view from the drop-down list. </p>
+                                <p class="indentLevel1">For example, we choose the <span class="AppCommand">CUSTOMERS</span>&#160;table and specify <span class="AppCommand">CUSTOMERS&#160;(SPLICE)</span>&#160;as the connection name for use in Tableau.</p>
+                            </li>
+                        </ol>
+                        <p class="indentLevel1">After you click <span class="AppCommand">OK</span>, <span class="ItalicFont">Tableau</span> is ready to work with your data.</p>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

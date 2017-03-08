@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="reference" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="SQL Reference|DataTypes|Numeric Data Types">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="The BIGINT data type provides 8 bytes of storage for integer values." /><title>BIGINT data type</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/SQLReference/DataTypes/BigInt.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="DataTypes.BigInt" id="DataTypes.BigInt"></a><a name="kanchor158"></a>BIGINT</h1>
+            <p>The <span class="CodeFont">BIGINT</span> data type provides 8 bytes of storage for integer values.</p>
+            <p class="heading2">Syntax</p>
+            <div class="preWrapper"><pre class="FcnSyntax">BIGINT</pre>
+            </div>
+            <p class="heading2">Corresponding Compile-time Java Type</p>
+            <div class="preWrapper"><pre class="FcnSyntax">java.lang.Long</pre>
+            </div>
+            <p class="heading2">JDBC Metadata Type (java.sql.Types)</p>
+            <div class="preWrapper"><pre class="FcnSyntax">BIGINT</pre>
+            </div>
+            <p class="heading2">Notes</p>
+            <p>Here are several usage notes for the <span class="CodeFont">BIGINT</span>&#160;data type:</p>
+            <ul>
+                <li value="1">The minimum value is <span class="CodeFont">-9223372036854775808</span> (<span class="CodeFont">java.lang.Long.MIN_VALUE</span>)</li>
+                <li value="2">The maximum value is <span class="CodeFont">9223372036854775807 </span> (<span class="CodeFont">java.lang.Long.MAX_VALUE</span>)</li>
+                <li value="3">When mixed with other data types in expressions, the resulting data type follows the rules shown in <a href="Intro.NumericTypes.html#NumericTypePromotion">Numeric type promotion in expressions</a>.</li>
+                <li value="4">An attempt to put an integer value of a larger storage size into a location of a smaller size fails if the  value cannot be stored in the smaller-size location. Integer types can always successfully be placed in approximate numeric values, although with the possible loss of some precision. <span class="CodeFont">BIGINTs</span> can be stored in <span class="CodeFont">DECIMALs</span> if the <span class="CodeFont">DECIMAL</span> precision is large enough for the value.</li>
+            </ul>
+            <p class="heading2">Example</p>
+            <div class="preWrapper"><pre class="Example">9223372036854775807</pre>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

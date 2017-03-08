@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Installing">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="How to download, install, configure and verify your installation of Splice Machine on Hortonworks HDP" /><title>Installing and Configuring Splice Machine for Hortonworks HDP</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#OnPremise/InstallingSpliceMachine/HDPInstall.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor237"></a>Installing and Configuring Splice Machine for Hortonworks HDP</h1>
+            <p>This topic describes installing and configuring Splice Machine on a Hortonworks Ambari-managed cluster. Follow these steps:</p>
+            <ol>
+                <li value="1"><a href="#Verify">Verify Prerequisites</a>
+                </li>
+                <li value="2"><a href="#Install">Download and Install Splice&#160;Machine</a>
+                </li>
+                <li value="3"><a href="#Stop">Stop Hadoop Services</a>
+                </li>
+                <li value="4"><a href="#Configur8">Configure Hadoop Services</a>
+                </li>
+                <li value="5"><a href="#Start">Start Any Additional Services</a>
+                </li>
+                <li value="6">Make any needed <a href="#Optional">Optional Configuration Modifications</a></li>
+                <li value="7"><a href="#Run">Verify your Splice Machine Installation</a>
+                </li>
+            </ol>
+            <h2><a name="Verify"></a>Verify Prerequisites</h2>
+            <p>Before starting your Splice Machine installation, please make sure that your cluster contains the prerequisite software components:</p>
+            <ul>
+                <li value="1">A cluster running HDP </li>
+                <li value="2">Ambari installed and configured for HDP</li>
+                <li value="3">HBase  installed</li>
+                <li value="4">HDFS installed</li>
+                <li value="5">YARN&#160;installed</li>
+                <li value="6">ZooKeeper installed</li>
+                <li value="7">Ensure that Spark services are <span class="BoldFont">NOT</span>&#160;installed on your cluster; Splice Machine cannot currently coexist with Spark 1.x on a cluster.</li>
+                <li value="8">Ensure that Phoenix services are <span class="BoldFont">NOT</span>&#160;installed on your cluster, as they interfere with Splice Machine HBase settings.</li>
+            </ul>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>The specific versions of these components that you need depend on your operating environment, and are called out in detail in the <a href="../GettingStarted/Requirements.html">Requirements</a> topic of our <span class="ItalicFont">Getting Started Guide</span>.</p>
+            <h2><a name="Install"></a>Download and Install Splice&#160;Machine</h2>
+            <p>Perform the following steps <span class="important">on each node</span> in your cluster:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Contact Splice Machine for your installer</p>
+                        <p class="indentLevel1">You'll need to get the URL&#160;of your Splice Machine installer (gzip)&#160;package; the actual URL&#160;you use will depend on which Splice&#160;Machine version you're installing and which version of HDP you are using. Here are typical URLs for Splice Machine Release <span class="BasicVariablesSpliceReleaseVersion">2.5</span>:</p>
+                        <table>
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>HDP&#160;Version</th>
+                                    <th>Installer Package</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="InstallerVersionsHDP-R1Name">HDP&#160;2.4.2</span>
+                                    </td>
+                                    <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R1">hdp2.4.2</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R1">hdp2.4.2</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="InstallerVersionsHDP-R2Name">HDP&#160;2.5.0</span>
+                                    </td>
+                                    <td class="CodeFont"><span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="noteIcon">To be sure that you have the latest URL, please check <a href="https://community.splicemachine.com/">the Splice&#160;Machine Community site</a> or contact your&#160;Splice&#160;Machine representative.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create the <span class="CodeFont">splice</span> installation directory:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo mkdir -p /opt/splice</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Download the Splice Machine package into the <span class="CodeFont">splice</span> directory on the node. For example:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo curl '<span class="InstallerVersionsAWSS3Bucket">https://s3.amazonaws.com/splice-releases</span>/<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>/<span class="InstallerVersionsAWSInstallerPart">cluster/installer</span>/<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span>' -o /opt/splice/SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span><br /></pre>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Extract the Splice Machine package:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommandCell">sudo tar -xf SPLICEMACHINE-<span class="InstallerVersionsCurrentRelease">2.5.0.1707</span>.<span class="InstallerVersionsHDP-R2">hdp2.5.0</span>.<span class="InstallerVersionsSpliceReleaseGZ">p0.226.tar.gz</span> --directory /opt/splice</pre>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Run our script as <span class="ItalicFont">root</span> user <span class="important">on each node</span> in your cluster to add symbolic links to set up Splice&#160;Machine jar script symbolic links</p>
+                        <p class="indentLevel1">Issue this command <span class="important">on each node</span> in your cluster:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+sudo /opt/splice/default/scripts/install-splice-symlinks.sh</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Stop"></a>Stop Hadoop Services</h2>
+            <p>As a first step, we stop cluster services to allow our installer to make changes that require the cluster to be temporarily inactive. </p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Access the Ambari Home Screen</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Click the <span class="AppCommand">Actions</span> drop-down, and then click the <span class="AppCommand">Stop All</span> button.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Configur8"></a>Configure Hadoop Services</h2>
+            <p>Now it's time to make a few modifications in the Hadoop services configurations:</p>
+            <ul>
+                <li value="1"><a href="#Configur4" class="MCXref xref" xrefformat="{para}">Configure and Restart ZooKeeper</a>
+                </li>
+                <li value="2"><a href="#Configur5" class="MCXref xref" xrefformat="{para}">Configure and Restart HDFS</a>
+                </li>
+                <li value="3"><a href="#Configur2" class="MCXref xref" xrefformat="{para}">Configure and Restart YARN</a>
+                </li>
+                <li value="4"><a href="#Configur" class="MCXref xref" xrefformat="{para}">Configure MapReduce2</a>
+                </li>
+                <li value="5"><a href="#Configur3" class="MCXref xref" xrefformat="{para}">Configure and Restart HBASE</a>
+                </li>
+            </ul>
+            <h3><a name="kanchor238"></a><a name="Configur4"></a>Configure and Restart ZooKeeper</h3>
+            <p>To edit the ZooKeeper configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">ZooKeeper</span> in the Ambari in the left pane of the screen. </p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure ZooKeeper</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Make configuration changes:</p>
+                        <p class="indentLevel1">Scroll down to where you see <span class="ItalicFont">Custom zoo.cfg</span> and click <span class="AppCommand">Add Property</span> to add the <span class="CodeFont">maxClientCnxns</span> property and then again to add the <span class="CodeFont">maxSessionTimeout</span> property, with these values:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+maxClientCnxns=<span class="AppFontCustCode">0</span>
+maxSessionTimeout=<span class="AppFontCustCode">120000</span></pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Save Changes</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated ZooKeeper configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Start ZooKeeper</p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the ZooKeeper Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start ZooKeeper. Wait for the restart to complete.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="Configur5"></a><a name="kanchor239"></a>Configure and Restart HDFS</h3>
+            <p>To edit the HDFS&#160;configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">HDFS</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Edit the HDFS&#160;configuration as follows:</p>
+                        <table>
+                            <col />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td class="AppFont">NameNode Java heap size</td>
+                                    <td class="AppFontCust">4 GB</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">DataNode maximum Java heap size</td>
+                                    <td class="AppFontCust">2 GB</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Block replication</td>
+                                    <td class="AppFontCust">
+                                        <p>2 <span class="bodyFont">(for clusters with less than 8 nodes)</span></p>
+                                        <p>3 <span class="bodyFont">(for clusters with 8 or more nodes)</span></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Add a new property:</p>
+                        <p class="indentLevel1">Click <span class="AppCommand">Add Property</span>... under <span class="AppCommand">Custom hdfs-site</span>, and add the following property:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">
+dfs.datanode.handler.count=<span class="AppFontCustCode">20</span>
+</pre>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Save Changes</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Start HDFS</p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">HDFS&#160;Service Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HDFS. Wait for the restart to complete.</p>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Create directories for hbase user and the Splice Machine YARN application:</p>
+                        <p class="indentLevel1">Use your terminal window to create these directories:</p>
+                        <div class="preWrapperWide"><pre class="ShellCommand" xml:space="preserve">
+sudo -iu hdfs hadoop fs -mkdir -p hdfs:///user/hbase hdfs:///user/splice/history
+sudo -iu hdfs hadoop fs -chown -R hbase:hbase hdfs:///user/hbase hdfs:///user/splice
+sudo -iu hdfs hadoop fs -chmod 1777 hdfs:///user/splice hdfs:///user/splice/history
+</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="Configur2"></a>Configure and Restart YARN</h3>
+            <p>To edit the YARN configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">YARN</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Update these other configuration values:</p>
+                        <table>
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>New Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="AppFont">yarn.application.classpath </td>
+                                    <td class="AppFontCust">
+                                        <div class="gistWrapperWide">
+                                            <script src="https://gist.github.com/ghillerson/fdda1e568e2fcb86b54a26d6ef1c8b88.js">
+                                            </script>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.classpath</td>
+                                    <td class="AppFontCust">/opt/splice/default/lib/*</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">yarn.nodemanager.aux-services.spark_shuffle.classpath</td>
+                                    <td class="AppFontCust">/opt/splice/default/lib/*</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">yarn.nodemanager.aux-services.spark2_shuffle.class</td>
+                                    <td class="AppFontCust">org.apache.spark.network.yarn.YarnShuffleService</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">yarn.nodemanager.delete.debug-delay-sec</td>
+                                    <td class="AppFontCust">86400</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Memory allocated for all YARN&#160;containers on a node </td>
+                                    <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Minimum Container Size (Memory)</td>
+                                    <td class="AppFontCust">1 GB&#160;(based on node specs)</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Minimum Container Size (Memory)</td>
+                                    <td class="AppFontCust">30 GB&#160;(based on node specs)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Save Changes</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated YARN configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Start YARN</p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the <span class="AppCommand">YARN Service Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start YARN. Wait for the restart to complete.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="Configur"></a>Configure MapReduce2</h3>
+            <p>Ambari automatically sets these values for you:</p>
+            <ul class="codeListNested">
+                <li value="1">Map Memory</li>
+                <li value="2">Reduce Memory</li>
+                <li value="3">Sort Allocation Memory</li>
+                <li value="4">AppMaster Memory</li>
+                <li value="5">MR&#160;Map Java Heap Size</li>
+                <li value="6">MR&#160;Reduce Java Heap Size</li>
+            </ul>
+            <p>You do, however, need to make a few property changes for this service. To edit the MapReduce2 configuration, select the <span class="AppCommand">Services</span> tab at the top of the Ambari dashboard screen, then click <span class="AppCommand">MapReduce2</span> in the Ambari in the left pane of the screen. Finally, click the <span class="AppCommand">Configs</span> tab.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Select the <span class="AppCommand">Configs</span> tab to configure MapReduce2.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Update property values</p>
+                        <p class="indentLevel1">You need to replace <span class="AppFontCustCode">${hdp.version}</span> with the actual HDP version number you are using in these property values:</p>
+                        <ul class="codeListNested">
+                            <li value="1">mapreduce.admin.map.child.java.opts
+</li>
+                            <li value="2">mapreduce.admin.reduce.child.java.opts</li>
+                            <li value="3">mapreduce.admin.user.env</li>
+                            <li value="4">mapreduce.application.classpath</li>
+                            <li value="5">mapreduce.application.framework.path</li>
+                            <li value="6">yarn.app.mapreduce.am.admin-command-opts</li>
+                            <li value="7">MR AppMaster Java Heap Size
+</li>
+                        </ul>
+                        <p class="noteIndent" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>An example of an HDP&#160;version number that you would substitute for <span class="AppFontCustCode">${hdp.version}</span> is <span class="CodeFont">2.5.0.0-1245</span>.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Save Changes</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated MapReduce2 configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Start MapReduce2</p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the MapReduce2 Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start MapReduce2. Wait for the restart to complete.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="Configur3"></a>Configure and Restart HBASE</h3>
+            <p>To edit the HBASE configuration, click <span class="AppCommand">HBASE</span> in the Cloudera Manager home screen, then click the <span class="AppCommand">Configuration</span> tab and make these changes:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Change the values of these settings</p>
+                        <table>
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>New Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="AppFont">%&#160;of RegionServer Allocated to Write Buffer<br />(hbase.regionserver.global.memstore.size)</td>
+                                    <td class="AppFontCust">0.25</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">HBase RegionServer Maximum Memory<br />&#160;(hbase_regionserver_heapsize)</td>
+                                    <td class="AppFontCust">24 GB</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">% of RegionServer Allocated to Read Buffers<br />&#160;(hfile.block.cache.size)</td>
+                                    <td class="AppFontCust">0.25</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">HBase Master Maximum Memory<br />&#160;(hbase_master_heapsize)</td>
+                                    <td class="AppFontCust">5 GB</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Number of Handlers per RegionServer<br />&#160;(hbase.regionserver.handler.count)</td>
+                                    <td class="AppFontCust">200</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">HBase RegionServer Meta-Handler Count</td>
+                                    <td class="AppFontCust">200</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">HBase RPC Timeout</td>
+                                    <td class="AppFontCust">1200000&#160;(20 minutes)</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Zookeeper Session Timeout</td>
+                                    <td class="AppFontCust">120000 (2 minutes)</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">hbase.coprocessor.master.classes</td>
+                                    <td class="AppFontCust">com.splicemachine.hbase.SpliceMasterObserver</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">hbase.coprocessor.region.classes</td>
+                                    <td class="AppFontCust">
+                                        <p><span class="bodyFont">The value of this property is shown below, in Step 2</span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Maximum Store Files before Minor Compaction<br /> (hbase.hstore.compactionThreshold)<br /></td>
+                                    <td class="AppFontCust">5</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Number of Fetched Rows when Scanning from Disk<br />&#160;(hbase.client.scanner.caching)<br /></td>
+                                    <td class="AppFontCust">1000</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">hstore blocking storefiles<br />&#160;(hbase.hstore.blockingStoreFiles)</td>
+                                    <td class="AppFontCust">20</td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Advanced hbase-env</td>
+                                    <td class="AppFontCust"><span class="bodyFont">The value of this property is shown below, in Step 3</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="AppFont">Custom hbase-site</td>
+                                    <td class="AppFontCust"><span class="bodyFont">The value of this is shown below, in Step 4</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li value="2">
+                        <p>Set the value of the <span class="CodeFont">hbase.coprocessor.region.classes</span> property to the following:</p>
+                        <div class="gistWrapperWide">
+                            <script src="https://gist.github.com/ghillerson/51e0a4305a0e924922047a26ba957cf4.js">
+                            </script>
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p>Under <span class="CodeFont">Advanced hbase-env</span>, set the value of <span class="CodeFont">hbase-env template</span> to the following:</p>
+                        <div class="gistWrapperWide">
+                            <script src="https://gist.github.com/ghillerson/4d65be32d410797dbb6e304836b6f653.js">
+                            </script>
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p>In <span class="CodeFont">Custom hbase-site</span> property, add the following properties:</p>
+                        <div class="gistWrapperWide">
+                            <script src="https://gist.github.com/ghillerson/ae744de2c7eac40391959f156bbcf530.js">
+                            </script>
+                        </div>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Save Changes</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Save</span> button to save your changes. You'll be prompted to optionally add a note such as <span class="CodeFont">Updated HDFS&#160;configuration for Splice Machine</span>. Click <span class="AppCommand">Save</span> again.</p>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Start HBase</p>
+                        <p class="indentLevel1">After you save your changes, you'll land back on the HBase Service <span class="AppCommand">Configs</span> tab in Ambari. </p>
+                        <p class="indentLevel1">Open the <span class="AppCommand">Service Actions</span> drop-down in the upper-right corner and select the <span class="AppCommand">Start</span> action to start HBase. Wait for the restart to complete.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Start"></a>Start any Additional Services</h2>
+            <p>We started this installation by shutting down your cluster services, and then configured and restarted each individual service used by Splice&#160;Machine.</p>
+            <p>If you had any additional services running, such as Ambari Metrics, you need to restart each of those services.</p>
+            <h2><a name="Optional"></a>Optional Configuration Modifications</h2>
+            <p>There are a few configuration modifications you might want to make:</p>
+            <ul>
+                <li value="1"><a href="#Modify">Modify the Authentication Mechanism</a> if you want to authenticate users with something other than the default <span class="ItalicFont">native authentication</span> mechanism.</li>
+                <li value="2">Adjust the replication factor if you have a small cluster and need to improve resource usage or performance.</li>
+            </ul>
+            <h3><a name="Modify"></a>Modify the Authentication Mechanism</h3>
+            <p>Splice Machine installs with Native authentication configured;  native authentication uses the <span class="CodeFont">sys.sysusers</span> table in the <span class="CodeFont">splice</span> schema for configuring user names and passwords. </p>
+            <p>You can disable authentication or change the authentication mechanism that Splice Machine uses to LDAP&#160;by following the simple instructions in <a href="Authentication.html" class="WithinBook">Configuring Splice Machine Authentication</a></p>
+            <h2><a name="Run"></a>Verify your Splice Machine Installation</h2>
+            <p>Now start using the Splice Machine command line interpreter, which is referred to as <span class="AppCommand">the splice prompt</span> or simply <span class="AppCommand">splice&gt;</span> by launching the <span class="CodeFont">sqlshell.sh</span> script on any node in your cluster that is running an HBase region server. </p>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>The command line interpreter defaults to connecting on port <span class="CodeFont">1527</span> on <span class="CodeFont">localhost</span>, with username <span class="CodeFont">splice</span>, and password <span class="CodeFont">admin</span>. You can override these defaults when starting the interpreter, as described in the <a href="../../Shared/CmdLineReference/Intro.CmdLineReference.html">Command Line (splice&gt;) Reference</a> topic in our <span class="ItalicFont">Developer's Guide</span>.</p>
+            <p>Now try entering a few sample commands you can run to verify that everything is working with your Splice Machine installation.</p>
+            <table summary="Sample commands to verify your installation">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Command to perform operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Display tables</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell" xml:space="preserve">splice&gt; show tables;</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Create a table</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell">splice&gt; create table test (i int);</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Add data to the table</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell">splice&gt; insert into test values 1,2,3,4,5;</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Query data in the table</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell">splice&gt; select * from test;</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Drop the table</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell">splice&gt; drop table test;</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Exit the command line interpreter</td>
+                        <td>
+                            <div class="preWrapperWide"><pre class="AppCommandCell">splice&gt; exit;</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span class="BoldFont">Make sure you end each command with a semicolon</span> (<span class="CodeFont">;</span>), followed by the <span class="ItalicFont">Enter</span> key or <span class="ItalicFont">Return</span> key </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>See the <a href="../../Shared/CmdLineReference/Intro.CmdLineReference.html">Command Line (splice&gt;) Reference</a> section of our <span class="ItalicFont">Developer's Guide</span> for information about our commands and command syntax. </p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

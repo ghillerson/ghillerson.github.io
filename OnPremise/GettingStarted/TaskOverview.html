@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Brief description of how to perform Common Tasks in Splice Machine." /><title>Summary of Performing Common Tasks with Splice Machine</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#OnPremise/GettingStarted/TaskOverview.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1>Summary of Common Tasks in Splice Machine</h1>
+            <p>The following table summarizes many of the common database tasks that you want to know about with Splice Machine, and includes links to the documentation for each task.</p>
+            <table summary="Summary descriptions of performing major tasks in Splice Machine.">
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a name="BackingUp"></a>Backing Up and Restoring</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine provides built-in system procedures that make it simple to back up and restore your entire database.You can:</p>
+                            <ul>
+                                <li value="1">create full and incremental backups to run immediately or to run on a scheduled basis</li>
+                                <li value="2">restore your database from a backup</li>
+                                <li value="3">manage your backups</li>
+                                <li value="4">access logs of your backups</li>
+                            </ul>
+                            <p>See the <span class="ItalicFont"><a href="../Administrators/BackupAndRestore.html">Backing Up and Restoring Databases</a></span> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="BITools"></a>Connecting Your Database</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine includes JDBC&#160;and ODBC&#160;connectors that enable you to connect to any third party Business Intelligence (<span class="ItalicFont">BI</span>)&#160;or SQL&#160;tool that provides these standard connection technologies.</p>
+                            <p>Java Database Connectivity (<span class="ItalicFont">JDBC</span>) is a Java API&#160;that allows Java programs to interface with database management systems. Open Database&#160;Connectivity (<span class="ItalicFont">ODBC</span>) is a language-independent API for interfacing with database management systems; developers can use this API&#160;to create an application that can interface with any database management system (DBMS)&#160;that supports ODBC.</p>
+                            <p>As a quick reference, when creating connections, Splice Machine generally uses the following parameters:</p>
+                            <table summary="Splice Machine default connection parameters">
+                                <col />
+                                <col />
+                                <thead>
+                                    <tr>
+                                        <th>Setting</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Host Name:</td>
+                                        <td><span class="AppCommand">localhost</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Database Name:</td>
+                                        <td><span class="AppCommand">splicedb</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Port Number:</td>
+                                        <td><span class="AppCommand">1527</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>User Name:</td>
+                                        <td><span class="AppCommand">splice</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password:</td>
+                                        <td><span class="AppCommand">admin</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Schema:</td>
+                                        <td>All tables are created in a schema name is the user name, <span class="CodeFont">splice</span>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>The <span class="ItalicFont"><a href="../../Shared/Developers/Connecting/Intro.Connecting.html">Connecting Your Splice Machine Database</a></span> section in our <span class="ItalicFont">Developer's Guide</span> includes examples of connecting with specific tools, including JDBC&#160;and ODBC&#160;connection examples written in Java, JRuby, Jython, and C.</p>
+                            <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> JDBC or ODBC drivers; other drivers will not work correctly.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="Importing"></a>Importing Data</td>
+                        <td>
+                            <p class="noSpaceAbove">The Splice Machine <span class="CodeFont"><a href="../../Shared/SQLReference/BuiltInSysProcs/ImportData.html">SYSCS_UTIL.IMPORT_DATA</a></span>&#160;and <a href="../../Shared/SQLReference/BuiltInSysProcs/UpsertDataFromFile.html"><span class="CodeFont">SYSCS_UTIL.UPSERT_DATA_FROM_FILE</span></a>&#160;built-in system procedures allow you to perform bulk imports that utilize the parallel processing power of Hadoop's scale-out architecture while distributing the data evenly into different region servers to prevent "hot spots." We utilize a custom-built, asynchronous write pipeline, which is an extension to the native HBase pipeline, to accomplish this effort.</p>
+                            <p>Our bulk import process provides a number of significant advantages in comparison to traditional Hadoop ETL processes:</p>
+                            <ul>
+                                <li value="1">Includes error and consistency checking of incoming data allows for rejection of incorrect data sets; for example, primary key violations and invalid data such as a wrong data type.</li>
+                                <li value="2">Provides a consistent view of data even when numerous concurrent updates are occurring.</li>
+                                <li value="3">Our write processes do not block read processes.</li>
+                                <li value="4">Incremental updates and upserts are allowed.</li>
+                            </ul>
+                            <p>See the <span class="ItalicFont"><a href="../../Shared/Developers/ImportingData.html">Importing Data Into Splice Machine</a></span> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="Installing"></a>Installing Splice Machine</td>
+                        <td>
+                            <p class="noSpaceAbove">You use this set of steps to install Splice Machine on your cluster:</p>
+                            <ol>
+                                <li value="1">Configure Linux for Splice Machine, which involves a few configuration details.</li>
+                                <li value="2">Download the Splice&#160;Machine installer for your cluster or standalone computer.</li>
+                                <li value="3">Install Splice Machine and modify some configuration properties for your Hadoop platform software.</li>
+                                <li value="4">Verify your installation and run a few sample queries.</li>
+                            </ol>
+                            <p>The exact details vary with the Hadoop platform management software you're using. Most cluster installations of Splice Machine require 30 minutes or less to complete.</p>
+                            <p>Our <span class="ItalicFont"><a href="../InstallingSpliceMachine/Intro.InstallationGuide.html">Splice Machine Installation Guide</a></span> includes specific instructions for installing for Cloudera, Hortonworks, MapR, and on a standalone computer.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="RunningTransactions"></a>Running Transactions</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine is a fully transactional database. This allows you to perform actions such as <span class="ItalicFont">commit</span> and <span class="ItalicFont">rollback</span>, which means that in a transactional context, the database does not make changes visible to others until a <span class="ItalicFont">commit</span> has been issued.</p>
+                            <p>Splice Machine enforces consistency using <span class="ItalicFont">Snapshot Isolation</span>, which is used in conjunction with transaction processing. Snapshot isolation in a database essentially guarantees that every read made during a transaction will see a consistent snapshot of the database, and that the transaction itself can only commit if none of the updates it has made conflict with other (concurrent) updates made to the database while the transaction was in process.</p>
+                            <p>See the <span class="ItalicFont"><a href="../../Shared/Developers/Fundamentals/Transactions.html">Running Transactions In Splice Machine</a></span> section in our <span class="ItalicFont">Developer's Guide</span> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="StoredProcs"></a>Stored Procedures and Functions</td>
+                        <td>
+                            <p class="noSpaceAbove">The purpose of a <span class="BoldFont">stored procedure</span> is generally geared toward checking business rules and validating data before performing actions, or performing any significant processing of data with the inputs to the procedure. In its simplest form, a stored procedure is a set of code that can be executed over and over again.  It can be a simple set of SQL statements or logic but it can also contain extensive or complex logic that requires execution of several SQL statements. In Splice Machine, stored procedures are invoked with a <span class="CodeFont">CALL</span>&#160;statement and can issue <span class="CodeFont">UPDATE</span>, <span class="CodeFont">INSERT</span>, and <span class="CodeFont">DELETE</span>&#160;statements; however, they cannot be used in <span class="CodeFont">SELECT</span>&#160;statements.</p>
+                            <p>The main purpose of a <span class="BoldFont">function</span> is to do a small bit of processing, a query, or some formatting, and then return a value. A Splice Machine function must be written in Java as a public static method, always returns a value, and cannot modify data in the database; functions <span class="ItalicFont">can</span> used in <span class="CodeFont">SELECT</span>&#160;statements.</p>
+                            <p>The <a href="../../Shared/Developers/FcnsAndProcs/Intro.FcnsAndProcs.html">Using Functions and Stored Procedures</a> section in our <span class="ItalicFont">Developer's Guide</span> includes examples and code walk-throughs of writing, storing, and updating stored procedures and functions.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="Tracing"></a>Tracing Query Execution and Plans</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine provides both programmatic and interactive mechanisms for tracing execution of your queries, which helps you to optimize and debug their performance. </p>
+                            <p>The <span class="AppCommand">splice&gt;</span> command line interface also features commands to control and display execution tracing. You can also use the <span class="AppCommand">explain</span> command to display the execution plan for a statement without actually executing the statement.</p>
+                            <p>Our Management Console is a browser-based tool that allows you to monitor queries running on our Spark engine in real-time; for more information, see the <a href="../../Shared/ManagementConsole/Intro.ManagementConsole.html"><span class="ItalicFont">Splice Machine Management Console Guide</span></a>.</p>
+                            <p>For more information about tracing query execution and plans, see the <a href="../../Shared/Developers/TuningAndDebugging/Intro.TuningAndDebugging.html">Tuning Performance with Splice Machine</a> sections in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="Auth"></a>Using Authentication and Authorization</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine allows you to use either our native authentication mechanism or to use LDAP&#160;(<span class="noteEnterpriseNote">available only in our Enterprise edition</span>) to validate users against an external directory service. For more information, see our <a href="../InstallingSpliceMachine/Authentication.html">Authentication</a> topic.</p>
+                            <p>Our native authentication mechanism authenticates users against an encrypted password, using encryption algorithms that provide Splice Machine with FIPS&#160;compliance.</p>
+                            <p>We also provide user-based, role-based, and privilege-based authorization for different database operations:</p>
+                            <ul>
+                                <li value="1">Users can be created via the <span class="CodeFont"><a href="../../Shared/SQLReference/BuiltInSysProcs/CreateUser.html">SYSCS_UTIL.SYSCS_CREATE_USER</a></span>&#160;system procedure.</li>
+                                <li value="2">Roles can be created with the SQL&#160;<span class="CodeFont"><a href="../../Shared/SQLReference/Statements/CreateRole.html">CREATE ROLE</a></span>&#160;statement, and one or more users can be assigned to a role.</li>
+                                <li value="3">Privileges can be granted at the user or role level, and can be use to control access to functions and to objects such as tables, views, or columns.</li>
+                            </ul>
+                            <p>See the <a href="../../Shared/Developers/Fundamentals/Authorization.html">Splice Machine  Authorization</a> topic in our <span class="ItalicFont">Administrator's Guide</span> for more information.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="HCatalog"></a>Using HCatalog with Splice Machine</td>
+                        <td>
+                            <p class="noSpaceAbove">Apache HCatalog is a metadata and table management system for the broader Hadoop platform. HCatalog’s table abstraction presents users with a relational view of data in the Hadoop distributed file system (HDFS) and ensures that users need not worry about where or in what format their data is stored. HCatalog supports reading and writing files in any format for which a SerDe (serializer-deserializer) can be written.This makes it possible for you to use data processing tools such as Apache Pig, Apache MapReduce, and Apache Hive to easily read and write data on your cluster.</p>
+                            <p>Splice Machine integrates with HCatalog, allowing any HiveQL&#160;statements to read from (e.g. <span class="CodeFont">SELECT</span>)&#160;and write to (e.g. <span class="CodeFont">INSERT</span>)&#160;Splice Machine tables. You can also use joins and unions to combine native Hive tables with Splice Machine tables. </p>
+                            <p>For more information and a documented example, see the <a href="../Developers/HCatalog.html">Using Splice Machine with HCatalog</a> section of our <span class="ItalicFont">Developer's Guide</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="CmdLine"></a>Using the Command Line Interface</td>
+                        <td>
+                            <p class="noSpaceAbove">The Splice Machine command line interface (CLI), known as the <span class="AppCommand">splice&gt;</span>&#160;prompt makes it easy for you to interact directly with Splice Machine from a Linux terminal window. You can fully exercise your database from the <span class="AppCommand">splice&gt;</span>&#160;prompt , including the ability to:</p>
+                            <ul>
+                                <li value="1">enter SQL&#160;queries</li>
+                                <li value="2">connect to a database</li>
+                                <li value="3">execute prepared statements</li>
+                                <li value="4">enable tracing of query execution</li>
+                                <li value="5">commit or rollback transactions</li>
+                                <li value="6">run commands from a file</li>
+                                <li value="7">display various characteristics of your database</li>
+                            </ul>
+                            <p>The <a href="SpliceCmdLine.html">Command Line</a> section in this <span class="ItalicFont">Guide</span> includes a summary of the commands available on the splice&gt;&#160;command line. </p>
+                            <p>The <span class="ItalicFont"><a href="../../Shared/CmdLineReference/Intro.CmdLineReference.html">splice&gt; Command Line Interface</a></span> section in the <span class="ItalicFont">Developer's Guide</span> includes complete syntax and a full list of commands you can use with the <span class="AppCommand">splice&gt;</span>&#160;prompt.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="Logging"></a>Viewing Statement Logs</td>
+                        <td>
+                            <p class="noSpaceAbove">Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html" target="_blank">Apache log4j Logging API</a> to maintain logs of database activity. Among the capabilities you can take advantage of are the ability to configure individual loggers to log specific message levels, and the ability to associate a logger object with any java class. For more information about logging, see the <span class="ItalicFont"><a href="../../Shared/Developers/TuningAndDebugging/UsingLogging.html">Splice Machine Logging</a></span> section in our <span class="ItalicFont">Administrator's Guide</span>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Accessing our source code</td>
+                        <td>For access to the full source code for Splice Machine, visit <a href="https://github.com/splicemachine/spliceengine" target="_blank" title="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)" alt="Click to navigate to the Splice Machine Open Source GitHub repository (opens in new tab)">our open source GitHub repository</a>:&#160;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

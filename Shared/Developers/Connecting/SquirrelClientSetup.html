@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Connecting Your Database">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Walks you through installing and configuring the SQuirreL&#160;SQL&#160;Client for use with your Splice Machine database." /><title>Connecting Splice Machine with the SQuirrel SQL Client</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/Developers/Connecting/SquirrelClientSetup.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor41"></a>Setting Up the SQuirreL&#160;Client for Splice Machine</h1>
+            <p>This topic walks you through installing and configuring the SQuirreL&#160;SQL&#160;Client for use with your Splice Machine database, in the following sections:</p>
+            <ul>
+                <li value="1"><a href="#AboutSquirrel">About the SQuirreL SQL&#160;Client</a>
+                </li>
+                <li value="2"><a href="#InstallingSquirrel">Installing the SQuirreL SQL&#160;Client</a>
+                </li>
+                <li value="3"><a href="#ConfiguringSquirrel">Configuring SQuirreL for Splice Machine</a>
+                </li>
+                <li value="4"><a href="#UsingSquirrel">Using SQuirrel with Splice Machine</a>
+                </li>
+                <li value="5"><a href="#ConfigureAWS">Configuring SQuirreL&#160;to Access a Splice Machine Database on AWS</a>
+                </li>
+            </ul>
+            <h2><a name="AboutSquirrel"></a>About The SQuirreL&#160;SQL&#160;Client</h2>
+            <p>The <span class="ItalicFont">SQuirreL SQL Client</span> is an open source tool written in Java that provides a graphical interface that allows you to interact with your database in various ways, including:</p>
+            <ul>
+                <li value="1">viewing the structure of a JDBC compliant database</li>
+                <li value="2">browsing the data in tables</li>
+                <li value="3">issuing SQL commands</li>
+            </ul>
+            <h2><a name="InstallingSquirrel"></a>Installing the SQuirreL&#160;SQL Client</h2>
+            <p>This section presents installation instructions for the SQuirreL&#160;SQL&#160;Client for <a href="#MacOS">MacOS</a>&#160;and <a href="#PC">Windows</a> computers.</p>
+            <h3><a name="MacOS"></a>Installing SQuirreL&#160;SQL&#160;on MacOS</h3>
+            <p>Follow these steps to download and install SQuirreL&#160;on your MacOS&#160;computer:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Download the installer:</p>
+                        <p class="indentLevel1">Download SQuirreL SQL for OSX from <a href="http://squirrel-sql.sourceforge.net/" target="_blank">http://squirrel-sql.sourceforge.net/</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Run the installer:</p>
+                        <p class="indentLevel1">Double-click the installer to run it, and accept default settings (click the <span class="AppCommand">Next</span> buttons) in the screens that are presented, until you see the Select Packs screen.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Select packs:</p>
+                        <p class="indentLevel1">You only need to select the Derby Plugin, and we recommend also selecting the Oracle, SQL&#160;Server, and MySQL&#160;packs if you wish to perform any comparison tests,</p>
+                        <p class="indentLevel1">Once you've made your selections, click the <span class="AppCommand">Next</span> button to continue the installation.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Complete the installation:</p>
+                        <p class="indentLevel1">Accept the defaults in the remaining screens to complete the installation.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="PC"></a>Installing SQuirreL&#160;SQL on Windows</h3>
+            <p>Before installing SQuirreL&#160;on your Windows computer, make sure that you have version 1.7 or greater of the Java JRE&#160;installed. Then follow these steps to download and install SQuirreL&#160;on your Windows computer:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Download the installer:</p>
+                        <p class="indentLevel1">Download SQuirreL SQL for Windows from <a href="http://squirrel-sql.sourceforge.net/" target="_blank">http://squirrel-sql.sourceforge.net/</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Run the installer:</p>
+                        <p class="indentLevel1">Open a Windows command prompt in the directory to which the installer was downloaded, and enter the following command. Substitute the exact name of the download file in the command:</p>
+                        <div class="preWrapper"><pre class="ShellCommand">java -jar squirrel-sql-<span class="Highlighted">&lt;version&gt;</span>-standard.jar</pre>
+                        </div>
+                        <p class="indentLevel1">For example:</p>
+                        <div class="preWrapper"><pre class="ShellCommand">java-jar squirrel-sql-3.5.3-standard.jar</pre>
+                        </div>
+                        <p class="indentLevel1">Accept default settings (click the <span class="AppCommand">Next</span> buttons) in the screens that are presented, until you see the Select Packs screen.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Select packs:</p>
+                        <p class="indentLevel1">You only need to select the Derby Plugin, and we recommend also selecting the Oracle, SQL&#160;Server, and MySQL&#160;packs if you wish to perform any comparison tests,</p>
+                        <p class="indentLevel1">Once you've made your selections, click the <span class="AppCommand">Next</span> button to continue the installation.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Complete the installation:</p>
+                        <p class="indentLevel1">Accept the defaults in the remaining screens to complete the installation.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="ConfiguringSquirrel"></a>Configuring SQuirreL&#160;SQL for Splice Machine</h2>
+            <p>Before you can use SQuirreL&#160;with Splice Machine, you must create a new driver definition in SQuirreL&#160;for Splice Machine. Follow these steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Create the Splice Machine driver definition:</p>
+                        <p class="indentLevel1">In the <span class="ItalicFont">Drivers</span> tab, click the blue +&#160;sign <span class="AppCommand">Create a New Driver</span> icon. The <span class="ItalicFont">Add Driver</span> window displays:</p>
+                        <p class="indentLevel1">
+                            <img src="../../../Resources/Images/SquirrelAddDriver.jpg" title="Adding the Splice Machine JDBC driver for Squirrel" alt="Image of the Squirrel Add Driver window" class="nestedTightSpacing" />
+                        </p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Specify the driver name and example URL:</p>
+                        <p class="indentLevel1">In the <span class="ItalicFont">Add Driver</span> window, make these changes, which are shown in the image above:</p>
+                        <ul class="plainFont">
+                            <li value="1">Enter <span class="CodeFont">SpliceMachine</span> in the <span class="AppCommand">Name</span> field.</li>
+                            <li value="2">Enter <span class="CodeFont">jdbc:splice://localhost:1527/splicedb</span> in the <span class="AppCommand">Example URL</span>&#160;field.</li>
+                        </ul>
+                        <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> JDBC driver; other drivers will not work correctly.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Add the driver path and class name:</p>
+                        <p class="indentLevel1">Still in the <span class="ItalicFont">Add Driver</span> window, also make these changes:</p>
+                        <ul class="plainFont">
+                            <li value="1">
+                                <p class="indentLevel1">Click the <span class="AppCommand">Extra Class Path</span> button to display the extra class tab. Click the <span class="AppCommand">Add</span> button and navigate to the Splice jar file. which you'll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory. Typical locations are: </p>
+                                <table summary="Splice Machine jar file locations">
+                                    <col />
+                                    <col />
+                                    <thead>
+                                        <tr>
+                                            <th>OS</th>
+                                            <th>Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="BoldFont">MacOS</td>
+                                            <td class="CodeFont">\splicemachine\jdbc-driver\<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="BoldFont">Windows</td>
+                                            <td class="CodeFont">C:\splicemachine\jdbc-driver\<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>Remember to substitute the actual Splice Machine version installed on your computer for <span class="HighlightedCode">&lt;version&gt;</span>.</p>
+                            </li>
+                            <li value="2">Click the <span class="AppCommand">List Drivers</span> button.</li>
+                            <li value="3">
+                                <p>At the bottom of the Add Driver window, select the Splice Machine driver from the ClassName drop-down:</p>
+                                <div class="preWrapperWide"><pre class="PlainCell">com.splicemachine.db.jdbc.ClientDriver</pre>
+                                </div>
+                            </li>
+                            <li value="4">Click the <span class="AppCommand">OK</span> button to add the driver.</li>
+                        </ul>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Create an instance of the Splice client:</p>
+                        <p class="indentLevel1">Click the <span class="ItalicFont">Aliases</span> tab in the SQuirreL&#160;window, and then click the <span class="AppCommand">Create new Alias</span> (blue +&#160;sign)&#160;button. Enter information into the <span class="ItalicFont">Add Alias</span> screen as shown, using these values:</p>
+                        <table summary="Values for the Add Alias screen">
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Value to use</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ItalicFont">Name</td>
+                                    <td>A name for your connection; for example, <span class="CodeFont">Test Database</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">Driver</td>
+                                    <td>Select the SpliceMachine driver in the drop-down list.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">URL</td>
+                                    <td>
+                                        <p>If you're running the standalone version of Splice&#160;Machine, use:</p><pre class="PlainCell">jdbc:splice://localhost:1527/splicedb</pre>
+                                        <p>If you're running on a cluster, specify your server name in place of <span class="AppCommand">localhost</span>.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">User Name</td>
+                                    <td class="CodeFont"><span class="AppCommand">splice</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ItalicFont">Password</td>
+                                    <td class="CodeFont"><span class="AppCommand">admin</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Test your settings:</p>
+                        <p class="indentLevel1">To test that your driver settings are correct, you need to make sure that Splice Machine is started on your local computer. Then click the <span class="AppCommand">Test</span> button in the <span class="ItalicFont">Add Alias</span> screen to verify that the driver is working properly.</p>
+                        <p class="indentLevel1">In the <span class="ItalicFont">Connect to:</span>&#160;screen that displays, enter <span class="AppCommand">splice</span> as the User ID&#160;and <span class="AppCommand">admin</span> as the password, and click the <span class="AppCommand">Connect</span> button.</p>
+                        <p class="indentLevel1">You should see the successful connection confirmation screen.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="UsingSquirrel"></a>Using SQuirreL&#160;with Splice Machine</h2>
+            <p>When you're done configuring SQuirreL, you can connect to a Splice Machine database by following these steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Start the SQuirreL&#160;client</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Select the Splice instance:</p>
+                        <p class="indentLevel1">In the SQuirreL&#160;screen, select the <span class="ItalicFont">Aliases</span> tab, double-click the Splice instance to which you want to connect. For example:</p>
+                        <div>
+                            <img src="../../../Resources/Images/Using.SquirrelUse1.png" class="nestedTightSpacing" alt="Screen shot of selecting the Splice instance." />
+                        </div>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Connect:</p>
+                        <p class="indentLevel1">The <span class="ItalicFont">Connect</span> pop-up window displays. Simply accept the default user and password values (these are currently ignored), and click the <span class="AppCommand">Connect</span> button. You'll see your schema and tables displayed:</p>
+                        <div>
+                            <img src="../../../Resources/Images/Using.SquirrelUse2.png" class="nestedTightSpacing" alt="Screen shot of the Connect pop-up window." />
+                        </div>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Enter queries:</p>
+                        <p class="indentLevel1">To enter SQL&#160;queries, select the <span class="AppCommand">SQL</span>&#160;tab (next to the <span class="AppCommand">Objects</span> tab button).</p>
+                        <div>
+                            <img src="../../../Resources/Images/Using.SquirrelUse3.png" class="nestedTightSpacing" alt="Screen shot of entering a query in Squirrel." />
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="ConfigureAWS"></a>Configure SQL&#160;to Access a Splice Machine Database on AWS</h2>
+            <p>You can leverage your existing Splice Local alias to connect to an instance of SpliceDb running on an AWS EC2 cluster.</p>
+            <p>To do so, you need to create an SSH&#160;tunnel that forwards the packets sent <span class="ItalicFont">on port 1527</span> to localhost port 1527 on your AWS&#160;instance. Use the following command line:</p>
+            <div class="preWrapperWide"><pre class="ShellCommand">ssh -i ~/.ssh/&lt;aws-key-pair&gt;.pem -v -N -p 22 -L1527:localhost:1527 ubuntu@<span class="Highlighted">&lt;aws public hostname or public IP&gt;</span></pre>
+            </div>
+            <p>Then connect to your instance and enter queries as usual.</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

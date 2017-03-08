@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Summarizes the Splice Machine architecture and includes a brief summary of Hadoop and of how Splice Machine fits into the Hadoop ecosystem." /><title>Architectural overview of Splice Machine</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#OnPremise/GettingStarted/ArchitectureOvervew.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1>Splice Machine Architectural Overview</h1>
+            <p>This topic presents an overview of the Splice Machine architecture, and includes a brief overview of the Hadoop ecosystem.</p>
+            <div>
+                <h2>How Splice Machine Works</h2>
+                <p>Splice Machine provides a standard SQL&#160;database on a distributed computing infrastructure that can be scaled out horizontally. This makes it possible to build both operational (OLTP) and analytical (OLAP)&#160;applications that can easily scale to handle data growth. Our architecture features dual engines, one for running OLAP&#160;queries on Spark, and another for running OLTP&#160;queries on HBase/Hadoop; this means that OLAP&#160;and OLTP&#160;workloads are isolated and can run in parallel with minimal impact upon each other.</p>
+                <p>Splice Machine combines our own customized components with three proven technology building blocks:</p>
+                <table summary="Splice Machine stack description">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Technology</th>
+                            <th>Highlights</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apache Derby</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1">ANSI&#160;SQL-99 RDBMS</li>
+                                    <li value="2">Java-based</li>
+                                    <li value="3">ODBC/JDBC&#160;compliant</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Apache HBase/Hadoop</td>
+                            <td>
+                                <p class="noSpaceAbove">Proven scale-out:</p>
+                                <ul>
+                                    <li value="1">Auto-sharding</li>
+                                    <li value="2">Scales with commodity hardware</li>
+                                    <li value="3">Cost-effective from Gigabytes to Petabytes</li>
+                                    <li value="4">High availability through failover and replication</li>
+                                    <li value="5">LSM-trees</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Apache Spark</td>
+                            <td>
+                                <ul class="bulletCellNoTopSpace">
+                                    <li value="1">
+                                        <p>Unmatched performance:</p>
+                                        <ul>
+                                            <li value="1">Fastest sort of 1&#160;PB&#160;of data</li>
+                                        </ul>
+                                    </li>
+                                    <li value="2">
+                                        <p>Advanced in-memory technology:</p>
+                                        <ul>
+                                            <li value="1">Spill-to-disk for large datasets</li>
+                                            <li value="2">Resilient against node failures</li>
+                                            <li value="3">Pipelining for computation parallelism</li>
+                                        </ul>
+                                    </li>
+                                    <li value="3">
+                                        <p>Extensive Libraries:</p>
+                                        <ul>
+                                            <li value="1">Machine learning</li>
+                                            <li value="2">Streaming</li>
+                                            <li value="3">Graph processing</li>
+                                            <li value="4">Over 150 libraries and growing</li>
+                                        </ul>
+                                    </li>
+                                    <li value="4">
+                                        <p>Highly active developer community:</p>
+                                        <ul>
+                                            <li value="1">About 500 committers as of late 2015</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Here's a diagram of the Splice Machine technology stack:</p>
+                <div>
+                    <img src="../../Resources/Images/SpliceArchOverview1.png" class="indented" title="Diagram showing overview of Splice Machine 2.0 architecture" alt="Splice Machine architecture" />
+                </div>
+                <h3>Advanced Spark&#160;Integration</h3>
+                <p>As you can see, Splice Machine integrates our Spark and HBase engines; we do this by using a <span class="ItalicFont">universal execution plan</span> and <span class="ItalicFont">universal byte code</span>, which allows us to share the optimizer, plan, and code for execution on both Spark and HBase. </p>
+                <p>Our advanced Spark integration also features an innovative mechanism for creating high-performance Spark RDDs that:</p>
+                <ul>
+                    <li value="1">provide fast access to HFiles in HDFS</li>
+                    <li value="2">are merged with deltas from Memstore</li>
+                    <li value="3">avoid the slower HBase API</li>
+                </ul>
+                <h3>Splice Machine Cluster Deployment</h3>
+                <p>The following diagram shows how Splice&#160;Machine is typically deployed across a set of HBase Region Servers in a cluster, which requires these three steps:</p>
+                <ol>
+                    <li value="1">Perform a standard installation of an HBase cluster (HBase, HDFS, and ZooKeeper)&#160;with Spark.</li>
+                    <li value="2">Distribute the Splice Machine JAR&#160;to each region server in your cluster.</li>
+                    <li value="3">Automatically invoke coprocessors on each region.</li>
+                </ol>
+                <p>The following diagram illustrates Splice Machine running on a cluster with multiple HBase region servers; each of the orange boxes in the diagram indicates an HBase coprocessor:</p>
+                <div>
+                    <img src="../../Resources/Images/SpliceArch3.png" class="indented" title="Splice Deployment Diagram" alt="Splice Machine deployment diagram" />
+                </div>
+                <h2><a name="About2"></a>About the Hadoop Ecosystem</h2>
+                <p>Hadoop is an open-source distributed platform for storing and processing large data sets. It helps control big data processing costs by distributing computing across commodity servers instead of using expensive, specialized servers.  Commodity hardware refers to machines that are inexpensive, already available or easily obtainable, and interchangeable with similar hardware. Commodity computing is seen as a more scalable solution because
+		purchasing additional high-cost, high-performance servers to keep up with the growth of big data quickly becomes prohibitively expensive.</p>
+                <p><a href="https://hadoop.apache.org/" target="_blank">Hadoop</a> was  inspired by big data operations created at Google, and developed at Yahoo, which turned it over to the Apache Software Foundation. Apache continues to maintain it as an open-source project with a global community of users and contributors. The Apache Hadoop framework includes the following modules:</p>
+                <ul>
+                    <li value="1"><span class="ItalicFont">Hadoop Distributed File System</span> (HDFS), a Java-based distributed file system designed to store data on commodity servers. HDFS stores files by dividing them into smaller blocks and replicating them on three or more servers. It is highly fault-tolerant and provides high throughput access to application data. HDFS is well suited for the storage of large files. HDFS is designed more for batch processing rather than interactive use by users. The emphasis is on high throughput of data access rather than low latency of data access.</li>
+                    <li value="2"><span class="ItalicFont">MapReduce</span>, a batch programming model that uses parallel processing — basically, using more than one CPU to execute a task simultaneously — to make processing big data faster, cheaper, and more manageable.</li>
+                    <li value="3"><span class="ItalicFont">Hadoop YARN</span>, a resource-management and scheduling platform. YARN removes the resource management and scheduling responsibilities from MapReduce, optimizing cluster utilization and allowing MapReduce to focus on data processing.</li>
+                    <li value="4"><span class="ItalicFont">Hadoop Common</span>, which consists of the libraries and utilities required by other Hadoop modules.</li>
+                </ul>
+                <p>Beyond these core components, Hadoop includes an entire ecosystem of technologies based on HDFS, including:</p>
+                <ul>
+                    <li value="1"><span class="ItalicFont"><a href="https://hbase.apache.org/" target="_blank">Apache HBase</a></span>, a key-value data store inspired by Google’s Big Table.</li>
+                    <li value="2"><span class="ItalicFont"><a href="https://hive.apache.org/" target="_blank">Apache Hive</a></span>, a SQL-based, analytic query engine.</li>
+                    <li value="3"><span class="ItalicFont"><a href="https://pig.apache.org/" target="_blank">Apache Pig</a></span>, a procedural language.</li>
+                    <li value="4"><span class="ItalicFont"><a href="http://spark.apache.org/" target="_blank">Apache Spark</a></span>, a fast, in-memory
+		engine for large-scale data processing.</li>
+                    <li value="5">Commercial technologies such as <span class="ItalicFont"><a href="http://www.splicemachine.com/" target="_blank">Splice Machine</a></span>, which is a Hadoop RDBMS with joins and transactions.</li>
+                </ul>
+                <p>A typical Hadoop environment comprises a master node and several worker nodes. Most
+		Hadoop deployments consist of several master node instances to mitigate the risk of a single point of failure. A Hadoop environment can include hundreds or even thousands of worker nodes. Hadoop’s ability to store, process, and analyze large data sets in a cost-effective manner has made it the defacto architecture for today’s big data environments.</p>
+                <p>Hadoop differs from a traditional relational database, in that strictly speaking, it is a storage and batch data processing system. Hadoop itself is built for data processing with the Map-Reduce paradigm, not for use with a structured query language like SQL. There are commercial distributions of Hadoop, including <span class="ItalicFont">Cloudera</span>, <span class="ItalicFont">Hortonworks</span>, and <span class="ItalicFont">MapR</span>, that add functionality and improve reliability. There are also Hadoop-based tools that blur the once sharp line between Hadoop and traditional relational databases, such as <span class="ItalicFont">Splice Machine</span>, which provides Hadoop with the capabilities of a RDBMS to run business-critical operational applications and adds Spark processing power for analytic queries.</p>
+                <h3>About HBase</h3>
+                <p>Apache HBase is an open-source distributed database modeled after Google's BigTable and is one of the key building blocks of Splice Machine. It delivers scalability up to dozens of petabytes and supports automatic sharding, data replication, and real-time updates. HBase provides very fast reads and writes, but it does not provide a SQL interface or key RDBMS functionality, such as joins, secondary indexes, or ACID transactions.</p>
+                <p><span class="ItalicFont"><a href="http://hbase.apache.org/" target="_blank">HBase</a></span> is a type of <span class="ItalicFont">NoSQL</span> database, which means that it is not a relational database; instead it is designed to be a scalable, distributed database (or data store, if you prefer) that supports structured data storage for large tables. HBase provides very fast reads and writes, but it does not provide a SQL interface or key RDBMS functionality such as joins, secondary indexes, or ACID transactions. HBase also provides strong consistency, automatic sharding, and automatic failover for RegionServers, which are based on commodity machines to allow for easy and inexpensive cluster expansion.</p>
+                <h3>About Derby</h3>
+                <p>Apache Derby is a Java-based, full-featured ANSI SQL database. Splice Machine replaces Derby's storage layer with HBase, retains the Derby parser, and uses its own, redesigned planner, optimizer, and executor components to leverage the HBase computation engine. HBase co-processors are used to embed Splice Machine in each distributed HBase region, allowing us to achieve massive parallelization by pushing the computation down to each distributed data shard. This auto-sharding and failover technology enables real-time, incremental writes on top of the immutable Hadoop file system.</p>
+                <h3>Apache Spark</h3>
+                <p>Apache Spark is an open source cluster computing framework  for large-scale data processing. In contrast to Hadoop's two-stage disk-based MapReduce paradigm, Spark's multi-stage in-memory primitives provide very large performance boosts for certain applications:&#160;you can load data into a cluster's memory and then query it very efficiently and repeatedly. Splice Machine automates this for you.</p>
+                <p><a href="http://spark.apache.org/" target="_blank">Spark</a> requires a cluster manager and a distributed storage system. Spark can interface with a wide variety of systems, including the Hadoop Distributed File System (HDFS). Spark also supports a pseudo-distributed local mode, usually used only for development or testing purposes, where distributed storage is not required and the local file system can be used instead; in such a scenario, including the standalone version of Splice Machine, Spark is run on a single machine with one executor per CPU core.</p>
+                <h2>How Query Execution Works in Splice Machine</h2>
+                <p>Splice Machine added Spark processing of certain queries in version 2.0. Every query is considered analytic or operational in nature:</p>
+                <ul>
+                    <li value="1">Analytic queries require high throughput, so Splice Machine runs them using the Spark engine.</li>
+                    <li value="2">Operation queries require low latency, so Splice Machine runs them directly, using HBase queries.</li>
+                </ul>
+                <div>
+                    <img src="../../Resources/Images/SpliceOLTPOLAP.png" class="indentedTightSpacing" title="Splice Machine OLTP and OLAP Queries" alt="Splice Machine OLTP and OLAP Queries" />
+                </div>
+                <p>The first four steps are the same for executing a query using HBase or Spark:</p>
+                <ol>
+                    <li value="1">Parse the SQL.</li>
+                    <li value="2">Optimize the query.</li>
+                    <li value="3">Generate optimal byte code for the query.</li>
+                    <li value="4">Send the query to our OLTP&#160;execution engine on HBase, or send it to our Spark engine.</li>
+                </ol>
+                <h3>OLTP&#160;Execution on HBase</h3>
+                <p class="body">Running a Splice Machine query on HBase uses these steps:</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li value="1">Execute the OLTP&#160;query from byte code.</li>
+                    <li value="2">Use block cache and bloom filters to optimize data access.</li>
+                    <li value="3">Return the results.</li>
+                </ol>
+                <h3>OLAP&#160;Execution on Spark</h3>
+                <p class="body">Running a Splice Machine query on Spark uses these steps:</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li value="1">Generate the Spark execution plan.</li>
+                    <li value="2">Submit the Spark plan with byte code.</li>
+                    <li value="3">Use fair scheduling of distributed tasks.</li>
+                    <li value="4">Generate a RDD&#160;from HFiles and Memstore.</li>
+                    <li value="5">Execute the query and return results.</li>
+                </ol>
+                <h4>Spark Resource Management</h4>
+                <p>Splice Machine allows you to configure Spark resource management by prioritizing query, admin, and import jobs. You can also define your own custom resource pools in XML and assign priorities to them. For example, you might assign these weights (higher numbers indicate higher priority)&#160;to different resource pools:</p>
+                <table summary="Spark resource management - resource pools">
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>Resource Pool</th>
+                            <th>Scheduling Mode</th>
+                            <th>Assigned Priority Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="CodeFont">import</td>
+                            <td class="CodeFont">FAIR</td>
+                            <td class="CodeFont">10</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">query</td>
+                            <td class="CodeFont">FAIR</td>
+                            <td class="CodeFont">20</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">admin</td>
+                            <td class="CodeFont">FAIR</td>
+                            <td class="CodeFont">1</td>
+                        </tr>
+                        <tr>
+                            <td class="CodeFont">urgent</td>
+                            <td class="CodeFont">FAIR</td>
+                            <td class="CodeFont">1000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Managing Spark Queries with the Splice Machine Management Console</h4>
+                <p>The Splice Machine Management Console includes an interface that you can use to watch Spark queries execute in real time. This interface includes visualization of each query stage, with detailed metrics for the tasks in each stage, which makes it very useful for determining where each query is spending its time. You'll find its documentation in our <a href="../../Shared/ManagementConsole/Intro.ManagementConsole.html">Using the Splice Machine Management Console</a> book. </p>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Functions and Stored Procedures">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="How to store and update your compiled jar files when developing stored procedures and functions for Splice Machine." /><title>Storing and Updating Splice Machine Functions and Procedures</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/Developers/FcnsAndProcs/StoringAndUpdatingFcnsAndProcs.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1>Storing and Updating Splice Machine Functions and Stored Procedures</h1>
+            <p>This topic describes how to store and update your compiled Java Jar&#160;(<span class="CodeFont">.jar</span>)&#160;files when developing stored procedures and functions for Splice Machine.</p>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>Jar&#160;files are not versioned:&#160;the <span class="CodeFont">GENERATIONID</span>&#160;is always zero. You can view the metadata for the Jar files in the Splice data dictionary by executing this query:&#160;<span class="CodeFont">select * from sys.sysfiles;</span></p>
+            <h2>Adding a Jar&#160;File</h2>
+            <p>To add a new Jar&#160;file to your Splice Machine database, use the <span class="AppCommand">splice&gt;</span>&#160;command line interface to store the Jar and then update your <span class="CodeFont">CLASSPATH</span>&#160;property so that your code can be found:</p>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>When Splice Machine is searching for a class to load, it first searches the system <span class="CodeFont">CLASSPATH</span>. If the class is not found in the traditional system class path, Splice Machine then searches the class path set as the value of the <span class="CodeFont">derby.database.classpath</span> property.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Load your Jar&#160;file into the Splice Machine database </p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.INSTALL_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP', 0);</pre>
+                        </div>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJInstallJar.html">SQLJ.INSTALL_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <ul class="plainFont">
+                            <li value="1">The first argument is the path on your computer to your Jar file.</li>
+                            <li value="2">The second argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
+                            <li value="3">The third argument is currently unused but required; use <span class="CodeFont">0</span> as its value.</li>
+                        </ul>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Update your CLASSPATH</p>
+                        <p class="indentLevel1">You need to update your <span class="CodeFont">CLASSPATH</span>&#160;so that Splice Machine can find your code. You can do this by using the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure to update the <span class="CodeFont">derby.database.classpath</span> property:</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP');</pre>
+                        </div>
+                        <p class="indentLevel1">Note that if you've developed more than one Jar&#160;file, you can update the <span class="CodeFont">derby.database.classpath</span> property with multiple Jars by separating the Jar file names with colons when you call the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SetDatabaseProperty.html">SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY</a></span>&#160;system procedure . For example: </p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY('derby.database.classpath', 'SPLICE.MY_EXAMPLE_APP:SPLICE.YOUR_EXAMPLE');</pre>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <h2>Updating a Jar&#160;File</h2>
+            <p>You can use the  <span class="AppCommand">splice&gt;</span>&#160;command line interface to replace a Jar file:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Replace the stored Jar&#160;file</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REPLACE_JAR('/Users/me/dev/workspace/examples/bin/example.jar', 'SPLICE.MY_EXAMPLE_APP');</pre>
+                        </div>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJReplaceJar.html">SQLJ.REPLACE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <ul class="plainFont">
+                            <li value="1">The first argument is the path on your computer to your Jar file.</li>
+                            <li value="2">The second argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <h2>Deleting a Jar&#160;File </h2>
+            <p>You can use the  <span class="AppCommand">splice&gt;</span>&#160;command line interface to delete a Jar file:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Delete a stored Jar&#160;file</p>
+                        <div class="preWrapperWide"><pre class="AppCommand" xml:space="preserve">splice&gt;&#160;CALL&#160;SQLJ.REMOVE_JAR('SPLICE.MY_EXAMPLE_APP', 0);</pre>
+                        </div>
+                        <p class="indentLevel1">Please refer to the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJRemoveJar.html">SQLJ.REMOVE_JAR</a></span>&#160;topic in the Splice Machine SQL&#160;Reference book for more information about using&#160;this system procedure. To summarize:</p>
+                        <ul class="plainFont">
+                            <li value="1">The first argument is the name for the stored procedure Jar file in your database, in <span class="CodeFont">schema.name</span> format.</li>
+                            <li value="2">The second argument is currently unused but required; use <span class="CodeFont">0</span> as its value.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>The Jar&#160;file operations (the <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJInstallJar.html">SQLJ.INSTALL_JAR</a></span>, <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJReplaceJar.html">SQLJ.REPLACE_JAR</a></span>, and <span class="CodeFont"><a href="../../SQLReference/BuiltInSysProcs/SQLJRemoveJar.html">SQLJ.REMOVE_JAR</a></span> system procedures) are not executed within transactions, which means that committing or rolling back a transaction will not have any impact on these operations.</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

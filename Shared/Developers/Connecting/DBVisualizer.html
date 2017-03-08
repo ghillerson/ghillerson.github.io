@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Connecting Your Database">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Shows you how to connect the business intelligence tool DBVisualizer to Splice Machine using the JDBC&#160;driver." /><title>Connecting Splice Machine with DBVisualizer</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/Developers/Connecting/DBVisualizer.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1><a name="kanchor398"></a>Connecting DbVisualizer with JDBC</h1>
+            <p>This topic describes how to connect the <span class="ItalicFont">DbVisualizer</span> database visualization tool to Splice Machine via <span class="ItalicFont">JDBC</span>, in these three steps:</p>
+            <ol>
+                <li value="1"><a href="#Download">Download DbVisualizer</a>
+                </li>
+                <li value="2"><a href="#Set">Set up the Splice&#160;Machine driver</a>
+                </li>
+                <li value="3"><a href="#Create">Create a connection between DbVisualizer and Splice&#160;Machine</a>
+                </li>
+            </ol>
+            <h2><a name="Download"></a>Download DbVisualizer</h2>
+            <p>You can download a free version of <span class="ItalicFont">DbVisualizer</span> from <a href="http://www.dbvis.com" target="_blank">http://www.dbvis.com</a>; make sure that you have the latest version. After downloading, install the product on your computer, which provides excellent installation help if you encounter any difficulties.</p>
+            <h2><a name="Set"></a>Set up the&#160;Splice Machine Driver</h2>
+            <p>Follow the steps to create and configure the Splice Machine driver:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">Start DbVisualizer</li>
+                    <li value="2">Select <span class="AppFontCustCode">Tools |&#160;Driver Manager</span> from DbVisualizer's top menu.</li>
+                    <li value="3">
+                        <p class="topLevel">Create a new driver in DbVisualizer:</p>
+                        <ol class="plainFont">
+                            <li value="1">Click the first icon at the top (the plus sign) to configure a new driver.</li>
+                            <li value="2">
+                                <p>Enter the following values in the Driver Settings section to use our JDBC&#160;driver.</p>
+                                <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> JDBC driver; other drivers will not work correctly.</p>
+                                <table style="width: 100%;">
+                                    <col />
+                                    <col />
+                                    <tbody>
+                                        <tr>
+                                            <td class="CodeFont">Name:</td>
+                                            <td class="CodeFont">Splice Machine</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="CodeFont">URL&#160;Format:</td>
+                                            <td class="CodeFont">jdbc:splice://&lt;server&gt;:&lt;port:1527&gt;/splicedb</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="CodeFont">Driver Class:</td>
+                                            <td class="CodeFont">com.splicemachine.db.jdbc.ClientDriver</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <img src="../../../Resources/Images/DbVisDriver1.jpg" class="indented" />
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Create"></a>Create a Connection</h2>
+            <p>Follow the steps in this section to create a connection and start using DbVisualizer with Splice Machine.  See the <a href="http://confluence.dbvis.com/display/HOME/Documentation+Home" target="_blank">DbVisualizer User's Guide</a> for complete information about creating connections.</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">If you've not already done so, start DbVisualizer</li>
+                    <li value="2">
+                        <p class="topLevel">Start the New Connection wizard:</p>
+                        <p class="indentLevel1">Start the connection wizard by clicking <span class="AppCommand">Create&#160;Database Connection</span> in the <span class="ItalicFont">Database</span> menu.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Use Wizard</span> button.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Name your connection:</p>
+                        <p class="indentLevel1">Enter a name for the connection on the first Wizard page. For example, you might name it <span class="ItalicFont">Splice Machine Connection</span>.</p>
+                        <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button in the Wizard.</p>
+                    </li>
+                    <li value="4">
+                        <p class="topLevel">Select the driver:</p>
+                        <p class="indentLevel1">Select <span class="AppCommand">Splice Machine</span> as the Database Driver.</p>
+                        <p class="indentLevel1">Then click the <span class="AppCommand">Next</span> button again.</p>
+                    </li>
+                    <li value="5">
+                        <p class="topLevel">Set up the connection:</p>
+                        <p class="indentLevel1">Fill in the fields in the connection wizard screen using these values:              </p>
+                        <table style="width: 100%;">
+                            <col />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td class="CodeFont">Database URL:</td>
+                                    <td class="CodeFont">&lt;your Splice Machine database URL&gt;</td>
+                                </tr>
+                                <tr>
+                                    <td class="CodeFont">Database Userid:</td>
+                                    <td class="CodeFont">&lt;your Splice Machine database user ID&gt;</td>
+                                </tr>
+                                <tr>
+                                    <td class="CodeFont">Database Password:</td>
+                                    <td class="CodeFont">&lt;your Splice Machine database password&gt;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            <img src="../../../Resources/Images/DbVisWiz1.jpg" class="indented" />
+                        </p>
+                    </li>
+                    <li value="6">
+                        <p class="topLevel">Click the <span class="AppCommand">Ping Server</span> button to verify that your connection can be established.</p>
+                        <p class="noteIcon">Splice Machine must be running for the connection to be successful.</p>
+                    </li>
+                    <li value="7">
+                        <p class="topLevel">Click the <span class="AppCommand">Finish</span> button to create the connection.</p>
+                    </li>
+                    <li value="8">
+                        <p class="topLevel">Optionally set additional settings:</p>
+                        <p class="indentLevel1">You may want to configure some additional settings. For example, to control the timeout duration, use these steps:</p>
+                        <ol class="plainFont">
+                            <li value="1">Select Tools |&#160;Tools Properties from the top DBVisualizer menu.</li>
+                            <li value="2">Select Generic |&#160;Connection Keep-Alive from the Database tab.</li>
+                            <li value="3">
+                                <p>Enter values for your connection.</p>
+                                <p>
+                                    <img src="../../../Resources/Images/DbVisToolProps.jpg" />
+                                </p>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <p>Your connection is now listed in the left panel under <span class="AppCommand">Connections</span>. You can use it to explore the database schema, enter queries, and take advantage of all of the capabilities of <span class="ItalicFont">DBVisualizer</span>.</p>
+            <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>DbVisualizer's <span class="ItalicFont">SQL&#160;Commander</span> menu includes an option to <span class="ItalicFont">Strip Comments when Executing</span>. If you enable this option, any Splice Machine query hints that you use will be stripped out and won't be applied.</p>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>

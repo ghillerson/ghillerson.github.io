@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="withMenu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="Review.ReviewOff" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developer's Guide|Connecting Your Database">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Description of installing and configuring DBeaver for use with your Splice Machine database." /><title>Connecting Splice Machine with DBeaver</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Resources/Stylesheets/SpliceTriPaneStyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../index.html#Shared/Developers/Connecting/DBeaverSetup.html">Open topic with navigation</a>
+        </p>
+        <div class="TopicContent">
+            <h1>Using DBeaver with Splice Machine</h1>
+            <p>This topic walks you through installing and configuring DBeaver SQL&#160;Client for use with your Splice Machine database, in the following sections:</p>
+            <ul>
+                <li value="1"><a href="#About">About the DBeaver Client</a>
+                </li>
+                <li value="2"><a href="#Installi">Installing the DBeaver SQL&#160;Client</a>
+                </li>
+                <li value="3"><a href="#Configur">Configuring DBeaver for Splice Machine</a>
+                </li>
+                <li value="4"><a href="#Using">Using DBeaver with Splice Machine</a>
+                </li>
+            </ul>
+            <h2><a name="About"></a>About the DBeaver Client</h2>
+            <p>The <span class="ItalicFont">DBeaver Client</span> is a graphical SQL client written in Java that allows you to:</p>
+            <ul>
+                <li value="1"> view the structure of a JDBC compliant database</li>
+                <li value="2">browse the data in tables</li>
+                <li value="3">issue SQL commands</li>
+            </ul>
+            <h2><a name="Installi"></a>Installing the DBeaver Client</h2>
+            <p>This section presents installation instructions for the DBeaver Client for for <a href="#MacOS">MacOS</a>&#160;and <a href="#PC">Windows</a> computers.</p>
+            <h3><a name="MacOS"></a>Installing the DBeaver Client on MacOS</h3>
+            <p>Follow these steps to download and install DBeaver on your MacOS&#160;computer:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Download the installer:</p>
+                        <p class="indentLevel1">Download the DBeaver for MacOS zip archive from <a href="http://dbeaver.jkiss.org/download/" target="_blank">http://dbeaver.jkiss.org/download/</a>. </p>
+                        <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>You must Java version 7.0 or higher installed to run DBeaver.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Copy the application to your Applications folder:</p>
+                        <p class="indentLevel1">Double-click the file you downloaded and then copy the DBeaver.app to your Applications folder.</p>
+                    </li>
+                </ol>
+            </div>
+            <h3><a name="PC"></a>Installing DBeaver on Windows</h3>
+            <p>Follow these steps to install DBeaver on your Windows PC:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Download the installer:</p>
+                        <p class="indentLevel1">Download the installer for the enterprise edition of DBeaver for Windows from <a href="http://dbeaver.jkiss.org/download/" target="_blank">http://dbeaver.jkiss.org/download/</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Run the installer:</p>
+                        <p class="indentLevel1">Double-click the <span class="CodeFont">dbeaver-<span class="HighlightedCode">&lt;version&gt;</span>.exe</span> file that you downloaded to install DBeaver, using the installer's default values.</p>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Configur"></a>Configuring DBeaver for Splice Machine</h2>
+            <p>Before you can use DBeaver with Splice Machine, you must create a new driver definition in DBeaver for Splice Machine. Follow these steps:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Find the Splice Machine JDBC&#160;Driver</p>
+                        <p class="indentLevel1">Make sure you can find our JDBC&#160;driver, which is installed on your computer when you install Splice Machine. You'll find it in the <span class="CodeFont">jdbc-driver</span> folder under the <span class="CodeFont">splicemachine</span> directory. Typical locations are:</p>
+                        <table summary="JDBC driver locations.">
+                            <col />
+                            <col />
+                            <thead>
+                                <tr>
+                                    <th>OS</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="BoldFont">MacOS</td>
+                                    <td class="CodeFont">\splicemachine\jdbc-driver\<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="BoldFont">Windows</td>
+                                    <td class="CodeFont">C:\splicemachine\jdbc-driver\<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="indentLevel1">You can also download the driver here:</p><pre class="Plain"><span class="PlatformVariablesJDBCDriverLoc">https://s3.amazonaws.com/splice-releases/2.0.1.18/jdbc-driver/db-client-2.0.1.18.jar</span></pre>
+                        <p class="noteImportant" data-mc-autonum="IMPORTANT: &#160;"><span class="autonumber"><span class="noteAutoNum">IMPORTANT: &#160;</span></span>You <span class="BoldFont">must</span> use the <span class="ItalicFont">Splice Machine</span> JDBC or ODBC drivers; other drivers will not work correctly.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Create a DBeaver driver definition for the Splice Machine driver:</p>
+                        <ol class="plainFont" style="list-style-type: lower-alpha;">
+                            <li value="1">Select <span class="AppCommand">Driver Manager</span> from the DBeaver <span class="AppCommand">Database</span> menu.</li>
+                            <li value="2">Click the <span class="AppCommand">New</span> button to create your new driver definition.</li>
+                            <li value="3">
+                                <p>Populate the fields in the <span class="ItalicFont">Create new driver</span> screen as shown here in the following screen shot:</p>
+                                <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>You need to add the Splice Machine JDBC&#160;jar file in the definition:&#160;click the <span class="AppCommand">Add File</span> button and then navigate to where it is stored on your computer; for example:<br />&#160;&#160;&#160;&#160;&#160;&#160; <span class="CodeFont">/splicemachine/jdbc-driver/<span class="PlatformVariablesJDBCDriverJar">db-client-2.0.1.18.jar</span></span>.</p>
+                                <div>
+                                    <img src="../../../Resources/Images/DBeaverDriver.png" class="nestedIndent" alt="Screen shot of the settings for creating a DBeaver driver definition for the Splice Machine driver" />
+                                </div>
+                                <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>To fill in the <span class="AppCommand">Driver class</span>&#160;field, click the <span class="AppCommand">Find Class</span> button and select the <span class="CodeFont">com.splicemachine.db.jdbc.ClientDriver</span>.</p>
+                            </li>
+                            <li value="4">Click the <span class="AppCommand">OK</span> button to create your new driver definition.</li>
+                            <li value="5">Click the Close button to close the DBeaver Driver Manager screen.</li>
+                        </ol>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Create a DBeaver connection for your database:</p>
+                        <p class="indentLevel1">DBeaver uses pre-defined connections to access your database, so you need to create a connection for each database that you access, using the following steps:</p>
+                        <ol class="plainFont" style="list-style-type: lower-alpha;">
+                            <li value="1">
+                                <p>Select <span class="AppCommand">New Connection</span> from the DBeaver <span class="AppCommand">Database</span> menu.</p>
+                            </li>
+                            <li value="2">
+                                <p>Select the <span class="AppCommand">Splice Machine</span> Driver connection type in the next screen, then click the <span class="AppCommand">Next</span> button:</p>
+                                <div>
+                                    <img src="../../../Resources/Images/DBeaverConnectType.png" class="nestedTightSpacing" alt="Selecting the Splice Machine driver as the DBeaver connection type" />
+                                </div>
+                            </li>
+                            <li value="3">
+                                <p class="indentLevel1">Fill in the <span class="ItalicFont">Create new connection</span> screen as shown here:</p>
+                                <div>
+                                    <img src="../../../Resources/Images/DBeaverConnect.png" alt="Creating a new DBeaver connection for Splice Machine" class="nestedTightSpacing" />
+                                </div>
+                                <p class="noteNote" data-mc-autonum="NOTE: &#160;"><span class="autonumber"><span class="noteAutoNum">NOTE: &#160;</span></span>The default <span class="AppCommand">user</span> name is <span class="CodeFont">splice</span>, and the default <span class="AppCommand">password</span> is <span class="CodeFont">admin</span>.For <span class="AppCommand">Server</span>:&#160;on a cluster,specify the IP&#160;address of an HBase RegionServer. If you're running the standalone version of Splice Machine, specify <span class="CodeFont">localhost</span>.<br /></p>
+                            </li>
+                            <li value="4">
+                                <p class="indentLevel1">We recommend testing the connection by clicking the <span class="AppCommand">Test Connection</span> button.</p>
+                                <p class="noteIcon">Splice Machine must be running for a successful connection.</p>
+                            </li>
+                            <li value="5">
+                                <p class="indentLevel1">Click the <span class="AppCommand">Next</span> button. If you have VPN&#160;requirements, fill those in on the <span class="ItalicFont">Network Configuration</span> screen; otherwise, simply click the <span class="AppCommand">Next</span> button again.</p>
+                            </li>
+                            <li value="6">
+                                <p class="indentLevel1">In the <span class="ItalicFont">Finish connection creation</span> screen, enter a name for your connection and click the <span class="AppCommand">Finish</span> button.</p>
+                                <div>
+                                    <img src="../../../Resources/Images/DBeaverFinishConnection.png" class="nestedTightSpacing" alt="Finishing creation of a new connection for DBeaver" />
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <h2><a name="Using"></a>Using DBeaver with Splice Machine</h2>
+            <p>Once you've finished adding the driver and connection, follow these steps to use DBeaver:</p>
+            <div class="opsStepsList">
+                <ol class="boldFont">
+                    <li value="1">
+                        <p class="topLevel">Start the DBeaver client:</p>
+                        <p class="indentLevel1">Locate and run the DBeaver application if it's not already running.</p>
+                    </li>
+                    <li value="2">
+                        <p class="topLevel">Navigate to your database:</p>
+                        <p class="indentLevel1">In the DBeaver <span class="ItalicFont">Database Navigator</span>, select the connection you want to use; in the example below, we're using the connection we just connected,&#160;which is named <span class="CodeFont">Splice Machine - localhost</span>.</p>
+                    </li>
+                    <li value="3">
+                        <p class="topLevel">Select database objects:</p>
+                        <p class="indentLevel1">Expand the tree structure under your connection to expose the database objects that you want to explore:</p>
+                        <div>
+                            <img src="../../../Resources/Images/UsingDBeaver.png" class="nestedTightSpacing" alt="Using DBeaver with Splice Machine" />
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <p style="font-size: 6pt;margin-top: 0;margin-bottom: 0;">&#160;</p>
+        </div>
+    </body>
+</html>
