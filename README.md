@@ -1,2 +1,2 @@
 # ghillerson.github.io
-Gary's GH-Pages Test Repo
+Testing use of GitHub Pages with Jekyll
